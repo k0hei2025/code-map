@@ -1,0 +1,29 @@
+
+.centerImage {
+               margin-top: 2rem;
+               text-align: center;
+              
+}
+
+.body {
+                padding-top: 2rem;
+                
+}
+  .bod{
+margin-top: 1rem;
+
+  }
+.background {
+                padding: 9rem;
+               
+                 background-Position:'center';
+                 background-Repeat:"no-repeat";
+                 background-Size:"cover";
+                 text-align:center;
+                 border: thick;
+                 border-width: thick;
+}
+.card{
+  text-align: left;
+ 
+}
