@@ -1,22 +1,12 @@
-import FrontPage from '../UX/frontPage.jsx'
-import styles from '../styles/Home.module.css'
-import Header from '../UX/header'
- import Footer from '../UX/footer'
-
-
-export default function Home() {
+import React from 'react'
+import Box from '../components/Box'
+function WorkSpace() {
   return (
-    
-    <div className={styles.container}>
-           
-     
-                                  <Header />  
-                                        
-                         
-                                <FrontPage />         
-                                                                    
-                                   <Footer/>                                 
-                      
-        </div>
+    <div>
+      hello
+      <Box />
+    </div>
   )
 }
+
+export default WorkSpace
