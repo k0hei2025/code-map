@@ -1,6 +1,10 @@
 import React from 'react'
 import EditorComponent from './Editor'
 function Box() {
+  // create state map at this page 
+
+  // store data at redux
+     
     return (
         <div>
         <fieldset  className="code-edit-container">
@@ -17,4 +21,7 @@ export default Box
  *   state { 
  *  
  * }
+ * [
+ * {} 
+ * ]
  */
