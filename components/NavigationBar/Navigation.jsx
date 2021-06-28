@@ -15,15 +15,22 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import Box from '../Box'
 import { Badge, Collapse, Container, Grid, Menu, MenuItem } from '@material-ui/core';
 import { Accessibility, AccountCircle, ExpandLess, ExpandMore, StarBorder } from '@material-ui/icons';
 import {sideFileData} from './SidebarFileData.js'
+import {useDispatch , useSelector} from 'react-redux'
+
+import {addComponentActions} from '../../store/store';
+
+
+import UpperBar from './upperNavigationBar'
+import {v4 as uuidv4  } from 'uuid'
 
 
 const drawerWidth = 240;
+ 
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,6 +40,10 @@ const useStyles = makeStyles(theme => ({
   
   appIcon:{
    color:"#F7EA00"
+  },
+  
+  listColor : {
+ backgroundColor:"red"
   },
 
   appBar: {
@@ -61,7 +72,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
   },
   codeCenter:{
                  backgroundColor:"#000000",
@@ -101,8 +112,31 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PersistentDrawerLeft() {
+
+
+
+
+
+  const dispatch = useDispatch();
+  
+  
+  const addCardHandler=()=>{
+   dispatch(addComponentActions.addComponent({
+      id : uuidv4(),
+      containerName : 'demo Contenter'
+   }))  
+}
+  
+  const cardComponent = useSelector((state)=>{
+  
+    state.components
+  });
+
+
   const classes = useStyles();
   const theme = useTheme();
+
+  
   const [open, setOpen] = React.useState(false);
     const [Req, setReq] = React.useState(false);
    const [_Req, _setReq] = React.useState(false);
@@ -127,6 +161,10 @@ export default function PersistentDrawerLeft() {
   };
   
   const content =  <p> <b> Access Right </b> </p>
+  
+ const fd =()=>{
+   <UpperBar />
+ }
 
   return (
     <div className={classes.root}>
@@ -151,49 +189,22 @@ export default function PersistentDrawerLeft() {
           <Grid md='9' sm='2' > 
            Icon 
           </Grid>
-          <Grid md='2'>
+          <Grid md='1'>
         
        <ListItem button onClick={handleClick}>
         
-           <Accessibility/>
-        
-        <ListItemText primary={content} />
-        {Req ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={Req} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-        </List>
-      </Collapse>
+       
+         <UpperBar />
+       </ListItem>
           </Grid>
          <Grid md='1'>
 
           <ListItem button onClick={_handleClick}>
         
-           <AccountCircle/>
+          <UpperBar/>
        
       </ListItem>
-      <Collapse in={_Req} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-         
-            <ListItemText primary="My page" /> 
-          
-            
-          </ListItem>
-       <ListItem button className={classes.nested}>
-         
-            <ListItemText primary="Logout" /> 
-          
-            
-          </ListItem>
-        </List>
-      </Collapse>
+   
           
         
           </Grid>
@@ -221,10 +232,11 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
                
-        <List>
+        <List classname={classes.listColor}>
           {sideFileData.map((text) => (
 
-            <ListItem button  key={text.id}>
+            <ListItem button  key={text.id} onClick={addCardHandler}>
+              
             
               <ListItemText primary={text.containerName} />
             </ListItem>
@@ -244,7 +256,7 @@ export default function PersistentDrawerLeft() {
         <Container maxWidth='xl'>
         <div className={classes.codeCenter}  >
 
-          <Box />
+          <Box   />
           </div>
           </Container>
       </main>

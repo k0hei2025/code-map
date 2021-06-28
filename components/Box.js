@@ -5,15 +5,21 @@ function Box() {
 
   // store data at redux
      
+  
+
+
     return (
         <div>
         <fieldset  className="code-edit-container">
             <legend>Function</legend>
-            <EditorComponent language='javascript' />
+           <EditorComponent />            
+       
         </fieldset>
         </div>
     )
 }
+
+
 
 export default Box
 
@@ -22,6 +28,7 @@ export default Box
  *  
  * }
  * [
- * {} 
+* { id }
+ * <EditorComponent language='javascript' /> 
  * ]
  */
