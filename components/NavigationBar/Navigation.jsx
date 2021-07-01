@@ -80,7 +80,8 @@ const useStyles = makeStyles(theme => ({
     maxHeight:'100vh',
     backgroundColor: "#000000",
     overflowY:'scroll',
-    paddingBottom: "50rem"
+    paddingBottom: "55rem"
+
 
   },
   drawerPaper: {
@@ -235,6 +236,7 @@ export default function PersistentDrawerLeft() {
           {sideFileData.map((text) => (
 
             <ListItem   style={{
+              marginBottom:'.2rem',
                 border:` 3px solid ${text.color}`
                 
 
