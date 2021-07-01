@@ -6,7 +6,7 @@ function Box() {
 
   // store data at redux
      
-  const allComponents=useSelector((state)=>state.component.components)
+  const allComponents=useSelector((state)=>state.components)
   // console.log(allComponents)
 
     return (

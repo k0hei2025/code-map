@@ -33,7 +33,7 @@
                 id : 7 , 
                 containerName : 'return',
                 color:'#7ECA9C'
-               },
+               }, 
                 {
                 id : 8 , 
                 containerName : 'Customised Component',

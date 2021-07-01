@@ -75,6 +75,7 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     flexShrink: 0,
   },
+  
   codeCenter: {
     maxHeight:'100vh',
     backgroundColor: "#000000",
@@ -233,7 +234,12 @@ export default function PersistentDrawerLeft() {
         <List classname={classes.listColor}>
           {sideFileData.map((text) => (
 
-            <ListItem button key={text.id} onClick={
+            <ListItem   style={{
+                border:` 3px solid ${text.color}`
+                
+
+               }
+                 }  button key={text.id} onClick={
               // addCardHandler
               () => {
                 dispatch(addComponentActions.addComponent(
@@ -247,7 +253,7 @@ export default function PersistentDrawerLeft() {
             }>
 
 
-              <ListItemText primary={text.containerName} />
+              <ListItemText  primary={text.containerName} />
             </ListItem>
           ))}
         </List>

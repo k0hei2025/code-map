@@ -65,5 +65,5 @@ value:0
    export const addComponentActions = addComponentSlice.actions;
                
   export const store = configureStore({ 
-                  reducer : {component:addComponentSlice.reducer}
+                  reducer : addComponentSlice.reducer
    })
