@@ -18,3 +18,28 @@ a {
 * {
   box-sizing: border-box;
 }
+
+*::-webkit-scrollbar{
+  transition: all 0.2s;
+  }
+  ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background:hsl(212, 23%, 69%);
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background:  hsl(217, 19%, 35%);
+    }
+    
+    /* Handle on hover */
+    /* ::-webkit-scrollbar-track:hover{
+       width: 8px;
+    } */
+    ::-webkit-scrollbar-thumb:hover {
+      background: white;
+    }

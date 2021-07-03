@@ -1,41 +1,46 @@
+
+ import {v4 as uuidv4} from 'uuid';
  export const sideFileData  = [
                 {
-                id : 1 , 
+                id : new Date().getTime() , 
                 containerName : 'Function',
-                color:'#98DED9'
+                color:'#A2EF44'
                },
                 {
-                id : 2 , 
+                id : new Date().getTime() , 
                 containerName : 'Array',
                 color:'#FFD5E5'
                },
                 {
-                id : 3 , 
-                containerName : 'Import',
+
+                id : new Date().getTime() , 
+               containerName : 'Import',
                 color:'#FFC045'
                },
                 {
-                id : 4 , 
+
+                id : new Date().getTime() , 
                 containerName : 'Export',
-                color:'#81F5FF'
+                color:'#D62AD0'
                },
                 {
-                id : 5 , 
+                id : new Date().getTime() , 
                 containerName : 'State',
                 color:'#FF449F'
                },
                 {
-                id : 6 , 
-                containerName : 'Destination Used',
+                id : new Date().getTime() , 
+               containerName : 'Destination Used',
                 color:'#17B794'
                },
                 {
-                id : 7 , 
-                containerName : 'return',
-                color:'#7ECA9C'
-               }, 
+
+                id : new Date().getTime() , 
+                containerName : 'Return',
+                color:'#FF6F5E'
+               },
                 {
-                id : 8 , 
+                id : new Date().getTime() , 
                 containerName : 'Customised Component',
                 color:'#C7FFD8'
                },

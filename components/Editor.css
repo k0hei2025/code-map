@@ -14,8 +14,9 @@ body{
     box-sizing: border-box;
     position: relative;
     border-radius: 6px;
-    height: 500px;
-    max-width: 300px;
+
+    height: 450px;
+    max-width: 250px;
     padding: 5px 25px;
     border: 3px solid #FFC045;
     color: #FFC045;
@@ -77,4 +78,13 @@ body{
   .code-edit-container pre[class*="language-"] {
     background: transparent;
     margin: 0;
+  }
+
+  .remove-component-button{
+margin-left: 5px;
+background-color: transparent;
+color: red;
+border: none;
+transform: translateY(3px);
+transition: all 0.2s;
   }

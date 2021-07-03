@@ -21,7 +21,7 @@ import { sideFileData } from './SidebarFileData.js'
 import { useDispatch, useSelector } from 'react-redux'
 import Box from '../Box'
 
-import { addComponentActions } from '../../store/store';
+import { addComponentActions } from '../../store/addComponentSlice';
 
 
 import UpperBar from './upperNavigationBar'

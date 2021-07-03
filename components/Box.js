@@ -1,53 +1,50 @@
-import React from 'react'
+
+import {React,useState} from 'react'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux';
+
 import EditorComponent from './Editor'
+import { addComponentActions } from '../store/addComponentSlice';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 function Box() {
-  // create state map at this page 
 
-  // store data at redux
-     
-  const allComponents=useSelector((state)=>state.components)
-  // console.log(allComponents)
 
-    return (
-        <div style={{display:'flex', justifyContent:'space-evenly', flexWrap:'wrap'}}>
+const dispatch=useDispatch()
 
-      {allComponents.map((val)=>{
+  const allComponents = useSelector((state) => state.component.components)
 
-        return(
-          <fieldset
-         key={val.sideBarObject.id} 
-         className="code-edit-container"
-         style={{color:`${val.sideBarObject.color}`,border:`3px solid ${val.sideBarObject.color}`}}
-         >
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+
+      {allComponents.map((val) => {
+
+        return (
+          <fieldset 
+            key={val.sideBarObject.id}
+            className="code-edit-container"
+            style={{ color: `${val.sideBarObject.color}`, border: `3px solid ${val.sideBarObject.color}` }}
+          >
             <legend>
-            {val.sideBarObject.containerName}
+              {val.sideBarObject.containerName}
+              <RemoveCircleOutlineIcon onClick={()=>{
+                dispatch(addComponentActions.removeComponent({val}))
+                // console.log(new Date().getTime())
+              }} />
+              {/* </button> */}
+              {/* } */}
             </legend>
-           <EditorComponent borderColor={val.sideBarObject.color}/>            
-       
-        </fieldset>
+            <EditorComponent borderColor={val.sideBarObject.color} language='javascript' />
 
+          </fieldset>
+        
 
         );
       })}
-  {/* {
-    allComponents.forEach((val)=>{
 
-      <fieldset
-         key={val.id} 
-         className="code-edit-container">
-            <legend>
-            {val.name}
-            </legend>
-           <EditorComponent />            
-       
-        </fieldset>
+    </div>
+  )
 
-    })
-  } */}
-      
-        </div>
-    )
 }
 
 
