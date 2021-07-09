@@ -26,7 +26,9 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   p:{
-                 textAlign:"left"
+                 textAlign:"left",
+                 fontSize:'14px',
+                 letterSpacing:'1px'
   },
   col:{
                  color:"white"
@@ -43,16 +45,16 @@ export default function Cards() {
                 name:'Satish patel' ,
                post:"Founder and CEO"},
                 
-               // {id:2 , 
-               // text:"Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has  become a well-oiled collaboration machine." , 
-               //  name:'Bruce McKenzie' ,
-               // post:" Founder & CEO, Huddle"},
+               {id:2 , 
+               text:"Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has  become a well-oiled collaboration machine." , 
+                name:'Bruce McKenzie' ,
+               post:" Founder & CEO, Huddle"},
                 
-               // {id:3 ,
-               //  text:"  Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has  become a well-oiled collaboration machine." , 
+               {id:3 ,
+                text:"  Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has  become a well-oiled collaboration machine." , 
 
-               //  name:'  Iva Boyd' ,
-               // post:"  Founder & CEO, Huddle"}
+                name:'  Iva Boyd' ,
+               post:"  Founder & CEO, Huddle"}
                 
                ]
 
@@ -65,13 +67,12 @@ export default function Cards() {
       return (
                      <Card className={classes.root}>
       <CardContent className={classes.col}>
-       <p id={i.id}> {i.text} </p>
-       <b className={classes.p}>{i.name}</b> 
-       <p className={classes.p}>{i.post}</p>  
+       <p id={i.id} style={{marginBottom:'40px'}}> {i.text} </p>
+       <p className={classes.p}><b>{i.name}</b>
+       <br /> 
+       <span style={{color:'rgba(255,255,255,0.5)'}}>{i.post}</span>
+       </p>
        </CardContent>
-      <CardActions>
-        <Button size="small" className={classes.col}>Learn More</Button>
-      </CardActions>
       </Card>
       )
     })

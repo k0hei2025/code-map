@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
     textTransform:'UpperCase'
     
   },
+  titles:{
+    letterSpacing:'1px',
+    fontWeight:'lighter',
+    color:'white',
+    textTransform:'UpperCase'
+  }
 }));
 
 
@@ -39,13 +45,13 @@ const Inclasses = useStyles();
                                               <Image src={logo} alt="picture author" width={140} height={40}/>
                                                </Grid>
                                  <Grid item xs={3} md={1} className={Inclasses.paper} >
-                                        <b>Features</b>   
+                                        <b className={Inclasses.titles}>Features</b>   
                                  </Grid>
                                  <Grid item xs={3} md={1} className={Inclasses.paper} >
-                                           <b>Team</b>
+                                           <b className={Inclasses.titles}>Team</b>
                                  </Grid>
                                  <Grid item xs={3} md={1} className={Inclasses.paper} >
-                                           <b>Signin</b>
+                                           <b className={Inclasses.titles}>Signin</b>
                                  </Grid>
                                </Grid>
                                </div>               
