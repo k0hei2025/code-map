@@ -27,6 +27,7 @@ import { addComponentActions } from '../../store/addComponentSlice';
 import UpperBar from './upperNavigationBar'
 import { v4 as uuidv4 } from 'uuid'
 
+import classes from './navigation.module.css'
 
 const drawerWidth = 240;
 
@@ -34,14 +35,8 @@ const drawerWidth = 240;
 
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
+ 
 
-  },
-
-  appIcon: {
-    color: "#F7EA00"
-  },
 
   listColor: {
     backgroundColor: "red"
@@ -133,7 +128,7 @@ export default function PersistentDrawerLeft() {
   }
 
 
-  const classes = useStyles();
+ 
   const theme = useTheme();
 
 

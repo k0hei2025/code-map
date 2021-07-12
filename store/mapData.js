@@ -25,7 +25,7 @@ const mapData = createSlice({
                               deleteData(state,action){
                                  let newContainer=[];
                                  state.dataContainer.filter((val)=>{
-                                      if(val.id!==action.payload.id){
+                                      if(val.id!==action.payload.val.id){
                                          newContainer.push(val)
                                       }
                                  })

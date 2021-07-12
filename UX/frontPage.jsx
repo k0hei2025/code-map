@@ -19,54 +19,11 @@ import leftArrow from '../UXicon/icon-arrow.svg'
 import bgQuotes from '../UXicon/bg-quotes.png'
 
 import { Fragment } from 'react'
-const useStyles = makeStyles(({
-  button:{
-   marginTop:"1rem",
-   backgroundColor: teal[300],
-   borderRadius:"3rem",
-   padding:'12px 3rem',
-   color:'white',
-   letterSpacing:'1px',
-   fontWeight:'light'
-   
-   
-  },
-  background:{
-                 backgroundImage: `url(${""})`,
-                 padding:"15rem",
-                 backgroundPosition:'center',
-                 backgroundRepeat:"no-repeat",
-                 backgroundSize:"cover"
-                 
-  },
-  grid:{
-    padding:"1rem"
-  },
-  productive:{
-    textAlign:"left",
-    marginTop:"6rem",
-    marginBottom:"6rem"
-
-  },
-  text:{
-      color: cyan[300],
-      border: "thick",
-      borderWidth: "thick",
-      borderColor: cyan[600],
-      paddingBottom:'3px',
-      borderBottom:'1px solid cyan',
-      marginRight:'5px'
-  },
-  productiveImg:{
-    
-  }
-  
-}));
 
 
 export default function frontPage() {
 
-               const styles = useStyles();
+              
 
                return (
                   <Fragment>
@@ -75,8 +32,9 @@ export default function frontPage() {
                                  
                                   
                                              <Grid xs={12} md={12} className={classes.centerImage}>
-                                             <Image src={illuistration} alt='picture author' style={{width:'20px'}}/>
-                                             </Grid>  
+                                             <Image src={illuistration} alt='picture author' style={{width:'20px' }}/>
+                                             </Grid> 
+
                                                 <Grid container  >
                                                 <Grid xs={6} md={4} ></Grid>   
                                                <Grid xs={12} md={4} > <h2 style={{color:'white',letterSpacing:'1px'}}>  All your files in one secure location, accessible anywhere.</h2>
@@ -92,18 +50,17 @@ export default function frontPage() {
                                                  </Grid>
                                                         
                                              
-                       <div>                          
-                                  
-                                                <Button variant="contained"  className={styles.button}  > Get Started </Button> 
+                                               
+                                  <button className={classes.button}>Get Started</button> 
 
-                           </div>
+                           
 
                               </Container>
                           <Container className={classes.background} >
                              
                              <Grid container >
                                <Grid md={1}></Grid>
-                                <Grid md={4} xs={12} className={styles.grid}>
+                                <Grid md={4} xs={12} className={classes.grid}>
                                 
                                 <Image src={accessAnywhere} height={60} width={80} />
                                 <h3 style={{color:'white'}}><b>Access your files, anywhere </b> </h3>
@@ -113,7 +70,7 @@ export default function frontPage() {
                                    </p>
                                 </Grid>
                                  <Grid md={2} ></Grid> 
-                                 <Grid md={4} xs={12} className={styles.grid} >
+                                 <Grid md={4} xs={12} className={classes.grid} >
                                 
                                 <Image src={securityIcon} height={60} width={70} />
                                 <h3 style={{color:'white'}}><b> Security you can trust</b></h3>
@@ -125,7 +82,7 @@ export default function frontPage() {
                                 </Grid>
                                   <Grid md={1}></Grid>
                                  <Grid md={1}></Grid> 
-                                 <Grid md={4} xs={12} className={styles.grid} >
+                                 <Grid md={4} xs={12} className={classes.grid} >
                            
                          
                                 <Image src={collabarationIcon} height={60} width={80} />
@@ -135,7 +92,7 @@ export default function frontPage() {
                                 </Grid>
 
                                    <Grid md={2}></Grid>
-                                 <Grid md={4} xs={12} className={styles.grid} >
+                                 <Grid md={4} xs={12} className={classes.grid} >
                                 <Image src={anyFileIcon} height={60 } width={80} />
                                 <h3 style={{color:'white'}}><b> Store any type of file </b></h3>
                                 <p style={{color:'rgba(255,255,255,0.5)'}}>
@@ -143,13 +100,13 @@ export default function frontPage() {
   file types to be securely stored and shared.
                                    </p>
                                 </Grid>
-                                  <Grid container className={styles.productive}>
-                                  <Grid md={6} xs={12} className={styles.productiveImg}>
+                                  <Grid container className={classes.productive}>
+                                  <Grid md={6} xs={12} className={classes.productiveImg}>
                                   <Image src={illuistrationImage} alt="stay productiveImg" />
                                   </Grid>
 
 
-                                  <Grid md={6} xs={12}  className={styles.productive}>
+                                  <Grid md={6} xs={12}  className={classes.productive}>
                                   <h1 style={{color:'white'}}> <b> Stay productive, wherever you are </b> </h1>
 
                  <p style={{color:'rgba(255,255,255,0.5)'}}>Never let location be an issue when accessing your files. Fylo has you covered for all of your file 
@@ -158,7 +115,7 @@ export default function frontPage() {
   Securely share files and folders with friends, family and colleagues for live collaboration. No email 
   attachments required. <br /></p>
    <a href="" style={{display:'flex',alignItems:'center'}}>
-   <p className={styles.text} >See how Fylo works</p> <Image src={leftArrow} width={20} height={20}/>  </a>
+   <p className={classes.text} >See how Fylo works</p> <Image src={leftArrow} width={20} height={20}/>  </a>
 </Grid>
   
                                   </Grid> 

@@ -7,51 +7,30 @@ import {Grid , makeStyles} from '@material-ui/core'
 import logo from './logo.svg'
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    letterSpacing:'3px',
-    color:'white',
-    fontWeight:"1px",
-    textTransform:'UpperCase'
-    
-  },
-  titles:{
-    letterSpacing:'1px',
-    fontWeight:'lighter',
-    color:'white',
-    textTransform:'UpperCase'
-  }
-}));
 
 
 export default function header() {
 
-const Inclasses = useStyles();
+
                                          
                return (
 
 <Container maxWidth='xl' className={classes.body}   >
                                    
-                              <div className={Inclasses.root} >
+                              <div className={classes.root} >
                                  <Grid container spacing={1}>
                                  
                                               <Grid item xs={3} md={9} >
                                               <Image src={logo} alt="picture author" width={140} height={40}/>
                                                </Grid>
-                                 <Grid item xs={3} md={1} className={Inclasses.paper} >
-                                        <b className={Inclasses.titles}>Features</b>   
+                                 <Grid item xs={3} md={1} className={classes.paper} >
+                                        <b className={classes.titles}>Features</b>   
                                  </Grid>
-                                 <Grid item xs={3} md={1} className={Inclasses.paper} >
-                                           <b className={Inclasses.titles}>Team</b>
+                                 <Grid item xs={3} md={1} className={classes.paper} >
+                                           <b className={classes.titles}>Team</b>
                                  </Grid>
-                                 <Grid item xs={3} md={1} className={Inclasses.paper} >
-                                           <b className={Inclasses.titles}>Signin</b>
+                                 <Grid item xs={3} md={1} className={classes.paper} >
+                                           <b className={classes.titles}>Signin</b>
                                  </Grid>
                                </Grid>
                                </div>               
