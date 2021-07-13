@@ -1,5 +1,10 @@
-
-
+import {React,useState} from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import {v4 as uuidv4} from 'uuid'
+import EditorComponent from './Editor'
+import { addComponentActions } from '../store/addComponentSlice';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 function Box() {
 
 
@@ -45,13 +50,3 @@ const dispatch=useDispatch()
 
 
 export default Box
-
-/**
- *   state { 
- *  
- * }
- * [
-* { id }
- * <EditorComponent language='javascript' /> 
- * ]
- */
