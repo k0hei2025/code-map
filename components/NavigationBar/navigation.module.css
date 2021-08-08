@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+
+  }
+   .appIcon {
+    color: #F7EA00
+  }
+    .listColor {
+    background-color: red
+  }
+   /* .appBar {
+    background-color: #1C2431;
+    transition: transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp;
+      duration: theme.transitions.duration.leavingScreen
+    })
+  }, */

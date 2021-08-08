@@ -1,51 +1,65 @@
-import React, { useState, useEffect } from "react";
-import Prism from "prismjs";
-// import './Editor.css'
+import React,{useState} from 'react';
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+// import { Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import 'prismjs/components/prism-clike';
+// import { store } from '../store/store';
+// import reducer from '../store/editorDataSlice';
+import 'prismjs/components/prism-javascript';
+//  import { editorDataActions } from '../store/editorDataSlice';
+import {addCodeString} from '../store/editorDataSlice'
+const code = `function add(a, b) {
+  return a + b;
+}
+`;
+ 
+class App extends React.Component {
+  state = { code };
+  render(props) {
 
-const EditorComponent = props => {
-  const [content, setContent] = useState(props.content);
+    return (
+      <Editor
+        value={this.state.code}
+        onValueChange={
+          code => 
+          {
+            this.setState({ code })
+            //  this.props.dispatch(addCodeString(code))
+            }
+          }
+          onBlur={
+            ()=>{
+              this.props.dispatch(addCodeString(
+                // this.state.code
+                {
+                  id: this.props.boxId,
+                  code:this.state.code
+                }
+                ))
+            }
+          }
 
-  const handleKeyDown = event => {
-    let value = content,
-      selStartPos = event.currentTarget.selectionStart;
-
-    console.log(event.currentTarget);
-
-    // handle 4-space indent on
-    if (event.key === "Tab") {
-      value =
-        value.substring(0, selStartPos) +
-        "    " +
-        value.substring(selStartPos, value.length);
-      event.currentTarget.selectionStart = selStartPos + 3;
-      event.currentTarget.selectionEnd = selStartPos + 4;
-      event.preventDefault();
-
-      setContent(value);
-    }
-  };
-
-  useEffect(() => {
-    Prism.highlightAll();
-  }, [props.language, content]);
-
-  return (
-    <div 
-    // className="code-edit-container"
-    >
-      <textarea
-        className="code-input"
-        value={content}
-        onChange={event => setContent(event.target.value)}
-        onKeyDown={handleKeyDown}
+        highlight={code => highlight(code, languages.js)}
+        padding={10}
+        style={{
+          fontFamily: '"roboto", "roboto", monospace',
+          fontSize: 12,
+         width:"300px",
+         overflowX:"auto"
+        }}
       />
-      <pre className="code-output">
-        <code 
-        className={`language-${props.language}`}
-        >{content}</code>
-      </pre>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default EditorComponent;
+const mapStateToProps = (state) => 
+({
+  // codestring: state.editor.codeString
+  codeData: state.editor.codeData    
+});
+
+// const mapDispatchToProps = { addCodeString };
+
+// export default App
+export default connect(mapStateToProps)(App);
