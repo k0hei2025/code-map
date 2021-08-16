@@ -3,10 +3,13 @@ import {makeStyles} from '@material-ui/core/styles'
 import classes from '../projectFiles/project.module.css'
 import {useDispatch , useSelector} from 'react-redux'
  import {mapDataAction} from '../../store/mapData'
-import React from 'react'
+
+import React,{useState} from 'react'
 import Map from '../../components/mapData'
 import classes1 from '../../components/mapData.module.css'
-
+import AddFile from '../../components/AddFile/AddFile'
+// import Navigation from '../../components/NavigationBar/Navigation'
+ 
 const useStyles = makeStyles({
                root : {
                  textAlign:'center',
@@ -20,37 +23,55 @@ const useStyles = makeStyles({
 export default function index() {
 
 
-     const dataSet = useSelector((i)=>i.mapData.dataContainer)
-   
+    let count=0;
+     const dataSet = useSelector((state)=>state.mapData.dataContainer)
+   const title=useSelector(state=>state.mapData.title)
+ 
 
 const dispatch = useDispatch();
 const addDataHandler=()=>{ 
 dispatch(mapDataAction.addData(
   {
     id : new Date().getTime(),
-    fileName  : 'tri.jsx'
+
+
+    fileName  : 'Untitled'
   }
   
 ))
- console.log("aa", dataSet)  
 }
 
-
+const [showTitle,setShowTitle]=useState(false)
   //  const classes  = useStyles();
                return (
+                 <div>
+                   {/* <Navigation /> */}
                               <div className={classes.contain} maxWidth='xl'>
  
                                                                        
 
-                                     <h1> Project Title</h1>
+                                      {!showTitle && <h1 onClick={()=>{setShowTitle(!showTitle)}}>{title}</h1>}
+                                     {showTitle && <input type='text' value={title} onBlur={()=>{
+                                       setShowTitle(!showTitle)}
+                                       }
+                                       onChange={(event)=>{
+                                         dispatch(mapDataAction.changeTitle(event.target.value))
+                                       }}
+                                       />}
                                      <div className={classes1.list}>
-                                    {dataSet.map((i)=>{
-                                     return ( <p id={i.id}>{i.fileName}</p>)
+                                    {dataSet.map((val)=>{
+                                     return(
+                                       <AddFile className={classes1.listItem} id={val.id} fileName={val.fileName} />
+                                     )
+ 
                                     })}
                                    </div>                                   
                                      <Button variant='contained' onClick={addDataHandler
                                      } color='primary'> Add File </Button>
 
                               </div>
+
+                              </div>
+ 
                )
 }

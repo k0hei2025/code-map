@@ -2,6 +2,17 @@
 
                padding-left: 5rem;
                padding-right: 5rem;
+<<<<<<< HEAD
                background-color: aliceblue;
 
  }
+=======
+               /* background-color: aliceblue; */
+               margin: 20px;
+
+ }
+
+ .listItem{
+     margin: 20px;
+ }
+>>>>>>> c6184195b2199b10c91be32164f6f6c1c039fd79

@@ -19,14 +19,17 @@ import {createSlice,current} from '@reduxjs/toolkit'
                               },
                               removeComponent(state,action)
                               {
-                                //   console.log(action.payload)
-                               const newComponents=state.components.filter(val=>{
-                                    //   val.id===action.payload.val.sideBarObject.id
-                                    console.log(val.id)
-                                    // console.log(action.payload.val.id)
+
+                                let newComponent=[];
+                                     state.components.filter(val=>{
+                                    if(val.id!==action.payload.val.id){
+                                      newComponent.push(val)
+                                    }
+                                      console.log(val.id!==action.payload.val.id)
                                   })
-                                  state.components=newComponents
-                            // state.components=state.components.splice()
+                                  state.components=newComponent
+                                  console.log(state.components)
+ 
                               }
 
                   },

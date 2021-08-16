@@ -1,0 +1,23 @@
+.icon{
+               border-radius: 100%;
+               background-color: grey;
+               height: 200px;
+               width: 200px;
+}
+
+.h2{
+               color: white;
+}
+
+.fileContainer{
+ background-color: rgb(78, 78, 78);
+ padding: .3rem;
+}
+
+.border{
+
+border-bottom: grey;
+border: width 100px; 
+margin: .7rem;
+
+}
