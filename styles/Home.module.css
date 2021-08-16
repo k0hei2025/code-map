@@ -8,6 +8,12 @@
   height: 100vh;
 }
 
+.frame {
+ background-color: #1C2431;
+ overflow: hidden;
+ max-height: 120vh !important;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
