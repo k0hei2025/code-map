@@ -11,26 +11,38 @@ export default function projectFile() {
    const allFiles = useSelector((state)=>state.fileStore.fileStore)
 
    const dispatch = useDispatch();
-       
+   
+   const postFileHandler= async(event)=>{
+     event.preventDefault();
 
-   const addFileHandler=(event)=>{
-      event.preventDefault();
-dispatch(fileStoreSlice.actions.addFile({
-               id : new Date().getTime(),
-               name : state
-}))
+     const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`,
+       {
+   method : 'POST',
+   body : JSON.stringify({
+      id : new Date().getTime(),
+      fileName : state}),
+   headers : { 'Content-Type' : 'application/json'}
+       })
+       const resData = await data.json();
+       console.log(resData);          
+  
+         
+  
+      }
+   
 
-console.log( allFiles , 'ffile added successfully')
-   }
+  
+
+   
 
                return (
                               <Grid container >
                                    <Grid item md={12} sm={12}>
-               <form onSubmit={addFileHandler}>
+               <form onSubmit={postFileHandler}>
                 <TextField id="outlined-basic" label="FileName" variant="outlined" value={state} onChange={(event)=>{
                                setState(event.target.value)
                 }}/>   
-                <button onClick={addFileHandler} style={{
+                <button onClick={postFileHandler} style={{
                                backgroundColor:'yellow',
                                fontWeight:'bold',
                                padding:'2rem',

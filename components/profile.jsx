@@ -12,8 +12,35 @@ export default function profile() {
 
 
    const allFiles = useSelector((state)=>state.fileStore.fileStore)
+
+
+const fileData = async ()=>{
+
+const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
+      const resData = await data.json() 
+    
+    console.log(resData)
+    
+
+    return resData;
+      }
+  
+    fileData();
+  
+
+
+for (let i of Object.entries(allFiles)){
+        console.log( 'ttrrr',  i.fileName , i.id)
+     }
+
+
+
+
    
-   console.log(allFiles)
+   console.log( 'values',  allFiles)
+              
+
+     
 
                return ( 
                               <Grid container spacing={3}>
@@ -32,12 +59,16 @@ export default function profile() {
                                                <h1 className={classes.h2} style={{textAlign:"center"}}>My Projects</h1>
                                                
                                               <Grid container spacing={3} style={{display:'flex'}}>
+                                           
+                                                 
+                                              
                                               {allFiles.map((i)=>{
+                                              
                                                      return (  
                                                         <Fragment>
                                                                                           <Grid item md={6} sm={12}>
-                                                                    <div className={classes.fileContainer}  id={i.id}>
-                                                                       <p style={{color:'white'}}><b>{i.name}</b></p> 
+                                                                    <div className={classes.fileContainer}  id={i.name.id}>
+                                                                       <p style={{color:'white'}}><b>{i.name.fileName}</b></p> 
                                                                                                                                                                                    
                                                                              
                                                                     </div>

@@ -10,6 +10,7 @@ function WorkSpace() {
   return (
     
     <div className={styles.frame} >
+    
    <NavigationBar />
 
     </div> 
