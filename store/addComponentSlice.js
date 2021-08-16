@@ -19,6 +19,7 @@ import {createSlice,current} from '@reduxjs/toolkit'
                               },
                               removeComponent(state,action)
                               {
+
                                 let newComponent=[];
                                      state.components.filter(val=>{
                                     if(val.id!==action.payload.val.id){
@@ -28,6 +29,7 @@ import {createSlice,current} from '@reduxjs/toolkit'
                                   })
                                   state.components=newComponent
                                   console.log(state.components)
+ 
                               }
 
                   },

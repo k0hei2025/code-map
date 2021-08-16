@@ -240,7 +240,10 @@ export default function PersistentDrawerLeft() {
                 border:` 3px solid ${text.color}`
                 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> c6184195b2199b10c91be32164f6f6c1c039fd79
                }
                  }  button key={text.id} onClick={
               // addCardHandler
@@ -280,4 +283,8 @@ export default function PersistentDrawerLeft() {
       </main>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c6184195b2199b10c91be32164f6f6c1c039fd79

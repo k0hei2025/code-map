@@ -1,21 +1,29 @@
+
 import {createSlice,current} from '@reduxjs/toolkit'
+ 
 
 
 const initalState = { 
                
+
        dataContainer : [],
        title:'Project'        
+ 
 }
 
 const mapData = createSlice({
                 name: 'mapData',
                 initialState: initalState,
                 reducers:   {
+
                                addData(state , action) {
+ 
                                   const dataList =  {  
                                      id  : action.payload.id ,
                                      fileName :  action.payload.fileName
                                   }
+
+
                                   state.dataContainer.push(dataList);  
                                },
                                updateData(state,action) {
@@ -34,6 +42,7 @@ const mapData = createSlice({
                               changeTitle(state,action) {
                                  state.title=action.payload;
                               }
+ 
                                
                 }
                 
