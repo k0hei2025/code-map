@@ -2,6 +2,7 @@
   margin: 3rem auto;
   width: 95%;
   max-width: 25rem;
+<<<<<<< HEAD
   /* border-radius: 6px; */
   /* background-color: rgba(75, 25, 25, 0.7); */
   background-color:rgba(255,255,255);
@@ -38,34 +39,66 @@
   margin-bottom: 3rem;
 }
 
+=======
+  border-radius: 6px;
+  background-color: #FFD523;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  text-align: center;
+}
+.body{
+  background-color: #1C2431;
+}
+
+.auth h1 {
+  text-align: center;
+  color: #1C2431;
+}
+
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
 .control {
   margin-bottom: 0.5rem;
 }
 
 .control label {
   display: block;
+<<<<<<< HEAD
   text-align: left;
   color: #1C2431;
   font-weight: normal;
   letter-spacing: 1px;
+=======
+  color: #1C2431;
+  font-weight: bold;
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
   margin-bottom: 0.5rem;
 }
 
 .control input {
   font: inherit;
+<<<<<<< HEAD
   /* background-color: #f1e1fc; */
   color: #1C2431;
   /* border-radius: 4px; */
   border: none;
   border-bottom: 2px solid #777;
+=======
+  background-color: #f1e1fc;
+  color: #1C2431;
+  border-radius: 4px;
+  border: 1px solid white;
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
   width: 100%;
   text-align: left;
   padding: 0.25rem;
 }
+<<<<<<< HEAD
 .control input:focus{
   border-bottom:2px solid #1C2431;
   outline: none;
 }
+=======
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
 
 .actions {
   margin-top: 1.5rem;
@@ -75,20 +108,27 @@
 }
 
 .actions button {
+<<<<<<< HEAD
   margin-top: 2rem;
+=======
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
   cursor: pointer;
   font: inherit;
   color: white;
   background-color: #1C2431;
   border: 1px solid white;
   border-radius: 4px;
+<<<<<<< HEAD
   text-transform: uppercase;
   font-weight: lighter;
   letter-spacing: 2px;
+=======
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
   padding: 0.5rem 2.5rem;
 }
 
 .actions button:hover {
+<<<<<<< HEAD
   background-color:  #F7EA00;
   border-color:  #F7EA00;
   color: black;
@@ -96,15 +136,29 @@
 
 .actions .toggle {
   font-weight: normal;
+=======
+  background-color: #873abb;
+  border-color: #873abb;
+}
+
+.actions .toggle {
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
   margin-top: 1rem;
   background-color: transparent;
   color: #1C2431;
   border: none;
   padding: 0.15rem 1.5rem;
+<<<<<<< HEAD
   transition: all 0.2s;
+=======
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
 }
 
 .actions .toggle:hover {
   background-color: transparent;
+<<<<<<< HEAD
   color: black;
+=======
+  color: #ae82cc;
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
 }

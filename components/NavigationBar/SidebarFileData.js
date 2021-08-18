@@ -52,17 +52,26 @@ import {v4 as uuidv4} from 'uuid';
  export const sideFileData  = [
                 {
                 id : 1 , 
+ 
                 containerName : 'Function',
                 color:'#A2EF44'
                },
                 {
+ 
+                id : new Date().getTime() , 
+
                 id : 2 , 
+ 
                 containerName : 'Array',
                 color:'#FFD5E5'
                },
                 {
 
+ 
+                id : new Date().getTime() , 
+
                 id : 3 , 
+ 
                containerName : 'Import',
                 color:'#FFC045'
                },
@@ -89,7 +98,9 @@ import {v4 as uuidv4} from 'uuid';
                 color:'#FF6F5E'
                },
                 {
+
                 id : 8 , 
+
                 containerName : 'Customised Component',
                 color:'#C7FFD8'
                },

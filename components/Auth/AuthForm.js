@@ -62,6 +62,7 @@ const AuthForm = () => {
   return (
     <body className={classes.body}>
     <section className={classes.auth}>
+<<<<<<< HEAD
     <h3>Ready To Start Your Journey? You're in the right place </h3>
       <h1>{login ? 'Login' : 'Sign Up'}</h1>
       <form onSubmit={submitHandler}> 
@@ -71,6 +72,16 @@ const AuthForm = () => {
         </div>
         <div className={classes.control}>
           <label htmlFor='password'>Password</label>
+=======
+      <h1>{login ? 'Login' : 'Sign Up'}</h1>
+      <form onSubmit={submitHandler}> 
+        <div className={classes.control}>
+          <label htmlFor='email'>Your Email</label>
+          <input type='email' id='email' required ref={emailRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='password'>Your Password</label>
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
           <input type='password' id='password' required ref={passwordRef} />
         </div>
         <div className={classes.actions}>

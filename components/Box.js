@@ -1,7 +1,9 @@
+
 import {React,useState} from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import {v4 as uuidv4} from 'uuid'
+ 
 import EditorComponent from './Editor'
 import { addComponentActions } from '../store/addComponentSlice';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
@@ -17,11 +19,13 @@ const dispatch=useDispatch()
     <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
 
       {allComponents.map((val) => {
-         console.log(val)
+
         return (
           <fieldset 
-            // key={val.sideBarObject.id}
-            key ={uuidv4()}
+ 
+            key={val.sideBarObject.id}
+
+
             className="code-edit-container"
             style={{ color: `${val.sideBarObject.color}`, border: `3px solid ${val.sideBarObject.color}` }}
           >
@@ -34,7 +38,7 @@ const dispatch=useDispatch()
               {/* </button> */}
               {/* } */}
             </legend>
-            <EditorComponent borderColor={val.sideBarObject.color} language='javascript' boxId={val.id}/>
+            <EditorComponent borderColor={val.sideBarObject.color} language='javascript' />
 
           </fieldset>
         
@@ -50,3 +54,13 @@ const dispatch=useDispatch()
 
 
 export default Box
+
+/**
+ *   state { 
+ *  
+ * }
+ * [
+* { id }
+ * <EditorComponent language='javascript' /> 
+ * ]
+ */
