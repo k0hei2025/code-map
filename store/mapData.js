@@ -32,8 +32,6 @@ const mapData = createSlice({
                                      fileName :  action.payload.fileName
                                   }
 
-
-
                                   state.dataContainer.push(dataList);  
                                },
                                updateData(state,action) {
@@ -74,7 +72,7 @@ const mapData = createSlice({
                                     
                                  })
                                    
-
+=     
                                  let newContainer=[];
                                  state.dataContainer.filter((val)=>{
                                       if(val.id!==action.payload.val.id){
@@ -87,7 +85,14 @@ const mapData = createSlice({
                               changeTitle(state,action) {
                                  state.title=action.payload;
                               }
-
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
+=======
+ 
+>>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
                                
                 }
                 
