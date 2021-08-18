@@ -23,41 +23,32 @@ const mapData = createSlice({
                                   state.dataContainer[list.id]=list.title
                               },
                               deleteData(state,action){
-                                  let newContainer=[];
+                                
                                  // state.dataContainer.filter((val)=>{
-                                 //      if(val.id!==action.payload.val.id){
-                                 //         newContainer.push(val)
-                                 //      }
-                                 // })
-                                  console.log( 'clicked Id', action.payload.id);
-                                 // state.dataContainer.map((val)=>{
-                                 //    console.log(val.id);
                                  //    if (val.id === action.payload.id){
-                                 //       console.log(val.id);
-                                 //       state.dataContainer.pop(val);
-                                 //       console.log('deleted' , val.id);
-                                 //      console.log( state.dataContainer.map((i)=>{
-                                 //         console.log(i.id);
-                                 //      }));
+                                 //       console.log(val.fileName , val.id)
                                  //    }
-                                    
-                                 //    // else {
-                                 //    //    console.log('err');
-                                 //    // }
+                                 //    console.log(val.id , val.fileName)
                                  // })
 
-                                 state.dataContainer.filter((val)=>{
-                                    
-                                    if ( (val.id === action.payload.id) === false ){
-                                      state.dataContainer = [...val];
-                                      console.log(state.dataContainer)
-                                    }
-                                    
-                                 })
+                               state.dataContainer =   state.dataContainer.filter(key=> key.id !== action.payload.id)
+
+                               console.log(state.dataContainer)
+
+                                 }
+
+                              //   console.log('after the condition', current (state.dataContainer))
+
+                                 //  newContainer = state.dataContainer.splice(idx, 1);
+
+                                 // state.dataContainer = newContainer;
+ 
+                                 // console.log(state.dataContainer)
                                    
-                              },
+                              ,
                               changeTitle(state,action) {
                                  state.title=action.payload;
+                                 console.log(state.title)
                               }
                                
                 }

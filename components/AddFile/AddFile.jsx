@@ -19,10 +19,10 @@ function AddFile(props) {
         }))
     }
     const [showInput,setShowInput]=useState(false)
-    const [inputValue,setInputValue]=useState('untitled')
+    const [inputValue,setInputValue]=useState('')
     return (
         <div className='enclosing-addFile-div' onBlur={()=>{setShowInput(false)}}>
-            {!showInput && <p onClick={()=>{setShowInput(true)}} key={props.id}>
+            {/* {!showInput && <p onClick={()=>{setShowInput(true)}} key={props.id}>
             {inputValue}
             </p>}
            {showInput && <input className='addFile-div' type='text' value={inputValue} onChange={(event)=>{
@@ -30,7 +30,9 @@ function AddFile(props) {
            }} 
           onBlur={blurHandler}
 
-           />}
+           />} */}
+             <h1>{props.fileName}</h1>
+
             { !showInput &&
              <DeleteIcon style={{color:'red',backgroundColor:'black',fontSize:'30px'}} onClick={deleteFileHandler}  />
              }
