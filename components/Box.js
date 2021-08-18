@@ -1,9 +1,17 @@
 
+
+import {React,useState} from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux';
+
+import {v4 as uuidv4} from 'uuid'
+ 
+
 import {React,useState} from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import {v4 as uuidv4} from 'uuid'
- 
+
 import EditorComponent from './Editor'
 import { addComponentActions } from '../store/addComponentSlice';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
@@ -22,10 +30,11 @@ const dispatch=useDispatch()
 
         return (
           <fieldset 
- 
+
             key={val.sideBarObject.id}
 
-
+            // key={val.sideBarObject.id}
+         
             className="code-edit-container"
             style={{ color: `${val.sideBarObject.color}`, border: `3px solid ${val.sideBarObject.color}` }}
           >

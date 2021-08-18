@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React,{useState} from 'react';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
@@ -10,14 +9,6 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 //  import { editorDataActions } from '../store/editorDataSlice';
 import {addCodeString} from '../store/editorDataSlice'
-=======
-import React from 'react';
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
- 
->>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
 const code = `function add(a, b) {
   return a + b;
 }
@@ -25,7 +16,6 @@ const code = `function add(a, b) {
  
 class App extends React.Component {
   state = { code };
-<<<<<<< HEAD
   render(props) {
 
     return (
@@ -50,14 +40,6 @@ class App extends React.Component {
             }
           }
 
-=======
- 
-  render() {
-    return (
-      <Editor
-        value={this.state.code}
-        onValueChange={code => this.setState({ code })}
->>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
         highlight={code => highlight(code, languages.js)}
         padding={10}
         style={{
@@ -70,7 +52,6 @@ class App extends React.Component {
     );
   }
 }
-<<<<<<< HEAD
 
 const mapStateToProps = (state) => 
 ({
@@ -82,11 +63,3 @@ const mapStateToProps = (state) =>
 
 // export default App
 export default connect(mapStateToProps)(App);
-=======
-
-
-
-
-
-export default App
->>>>>>> 24a9c0b4df7d7b60d5a33a8c9665bf1d2eea9b68
