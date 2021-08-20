@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useEffect, useState} from 'react'
 import {Grid} from '@material-ui/core'
 import {sideFileData} from '../components/NavigationBar/SidebarFileData'
 import classes from '../components/profile.module.css'
@@ -8,34 +8,60 @@ import Link from 'next/link'
 import projectFile from '../pages/addFile'
 import { useSelector } from 'react-redux'
 
+
+
 export default function profile() {
 
+const [data , setData] = useState([])
 
    const allFiles = useSelector((state)=>state.fileStore.fileStore)
 
 
+
+
+
+    useEffect(()=>{
 const fileData = async ()=>{
 
+   const dataObjectToArray = [];
+
 const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
+
+
+
+
       const resData = await data.json() 
     
-    console.log(resData)
+    console.log( "resData" , resData)
+
+    for (let i in resData){
+       dataObjectToArray.push({
+          id : i,
+          fileName : resData[i].fileName,
+       })
+       console.log( "dataObjectToArray" , dataObjectToArray)
+    }
     
+    
+
+    setData(dataObjectToArray);
+
+    
+
 
     return resData;
       }
   
     fileData();
+    },[])
+
+
+
+
+
+
+
   
-
-
-for (let i of Object.entries(allFiles)){
-        console.log( 'ttrrr',  i.fileName , i.id)
-     }
-
-
-
-
    
    console.log( 'values',  allFiles)
               
@@ -62,28 +88,28 @@ for (let i of Object.entries(allFiles)){
                                            
                                                  
                                               
-                                              {allFiles.map((i)=>{
-                                              
+                                              {data.map((i)=>{
+                                                console.log(i)
                                                      return (  
                                                         <Fragment>
                                                                                           <Grid item md={6} sm={12}>
-                                                                    <div className={classes.fileContainer}  id={i.name.id}>
-                                                                       <p style={{color:'white'}}><b>{i.name.fileName}</b></p> 
+                                  <div className={classes.fileContainer}  id={i.id}>
+                                       <p style={{color:'white'}}><b>{i.fileName}</b></p> 
                                                                                                                                                                                    
                                                                              
-                                                                    </div>
+                                          </div>
                                                                                       
-                                                                  <div className={classes.border}></div>
+                               <div className={classes.border}></div>
                                                                   </Grid>
                                                                   
-                                                </Fragment>
+                                      </Fragment>
                                                      )        
                                               })}
-                                              <Grid  className={classes.addButton} item md={12} sm={12}>
+                                 <Grid  className={classes.addButton} item md={12} sm={12}>
                                              
-                                         <Link href="./addFile" ><AddCircleOutlineIcon style={{ width:'50px' , height:'50px'}}/></Link>    
+             <Link href="./addFile" ><AddCircleOutlineIcon style={{ width:'50px' , height:'50px'}}/></Link>    
                                               </Grid>
-                                              </Grid>
+                                       </Grid>
                                               
                                              </Grid>
 
