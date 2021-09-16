@@ -13,6 +13,8 @@ const trial = async () => {
 const initialState = {
 
       fileStore: [],
+      myProfile: '',
+
 
 }
 
@@ -28,7 +30,12 @@ export const fileStoreSlice = createSlice({
 
                   }
                   state.fileStore.push(fileStore);
+            },
+
+            findId(state, action) {
+                  state.myProfile = action.payload.myProfileId;
             }
+
       }
 
 })

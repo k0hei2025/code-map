@@ -8,6 +8,10 @@ import Link from 'next/link'
 import projectFile from '../pages/addFile'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import { actionFileStore } from '../store/addFile'
+
+import { useDispatch } from 'react-redux'
+
 
 
 export default function profile() {
@@ -15,18 +19,22 @@ export default function profile() {
 
 
    const router = useRouter();
+   const dispatch = useDispatch();
 
 
    const [data, setData] = useState([])
 
    const allFiles = useSelector((state) => state.fileStore.fileStore)
 
+   const projectId = useSelector((state) => state.fileStore.myProfile)
 
+   console.log('------projectId', projectId)
 
 
 
    useEffect(() => {
       const fileData = async () => {
+
 
          const dataObjectToArray = [];
 
@@ -94,12 +102,21 @@ export default function profile() {
 
 
                {data.map((i) => {
+
+
+
+
                   console.log(i)
                   return (
                      <Fragment>
                         <Grid item md={6} sm={12}>
                            <div className={classes.fileContainer} id={i.id}>
-                              <Link href={`/projectFiles?id=${i.id}`}><p style={{ color: 'white' }}><b>{i.fileName}</b></p></Link>
+                              <Link href={`/projectFiles?id=${i.id}`}><p onClick={() => {
+                                 dispatch(actionFileStore.findId({
+                                    myProfileId: i.id
+                                 }))
+
+                              }} style={{ color: 'white' }}><b>{i.fileName}</b></p></Link>
 
 
                            </div>

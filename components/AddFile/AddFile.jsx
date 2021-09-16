@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { mapDataAction } from '../../store/mapData'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DeleteIcon from '@material-ui/icons/Delete';
 import DescriptionIcon from '@material-ui/icons/Description';
 import classes from './AddFile.module.css'
@@ -10,6 +10,13 @@ import Link from 'next/link';
 function AddFile(props) {
     const dispatch = useDispatch();
 
+    const deleteT = useSelector((state) => state.mapData.ids)
+
+    console.log('deleteT', deleteT)
+
+
+
+
     const blurHandler = () => {
         dispatch(mapDataAction.updateData({
             id: props.id,
@@ -18,9 +25,17 @@ function AddFile(props) {
     }
     const deleteFileHandler = () => {
         dispatch(mapDataAction.deleteData({
+
             id: props.id
         }))
+
+
+
+
     }
+
+
+
 
 
     const [showInput, setShowInput] = useState(false)
