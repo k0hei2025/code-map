@@ -12,7 +12,7 @@ export default function myProfile() {
                                                             paddingRight: "2rem"
 
                                              }}>
-
+                                                            <ProfileData />
                                              </div>
                               </Fragment>
                )

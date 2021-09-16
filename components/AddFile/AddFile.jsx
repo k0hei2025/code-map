@@ -45,7 +45,7 @@ function AddFile(props) {
                     }
                 </Grid>
                 <Grid md={2} >
-                    <Link href={`/?fileId=${props.id}`}><DescriptionIcon className={classes.open} /></Link>
+                    <Link href={`/maptr?fileId=${props.id}`}><DescriptionIcon className={classes.open} /></Link>
                 </Grid>
             </Grid>
         </div>

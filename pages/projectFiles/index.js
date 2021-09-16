@@ -1,6 +1,6 @@
 import { Button, Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import classes from '../projectFiles/project.module.css'
+import classes from './project.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { mapDataAction } from '../../store/mapData'
 import React, { useState, useRef } from 'react'
