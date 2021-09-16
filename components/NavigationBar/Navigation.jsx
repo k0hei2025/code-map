@@ -20,6 +20,7 @@ import { Accessibility, AccountCircle, ExpandLess, ExpandMore, StarBorder } from
 import { sideFileData } from './SidebarFileData.js'
 import { useDispatch, useSelector } from 'react-redux'
 import Box from '../Box'
+import { useRouter } from 'next/router'
 
 import { addComponentActions } from '../../store/addComponentSlice';
 
@@ -75,11 +76,11 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     flexShrink: 0,
   },
-  
+
   codeCenter: {
-    maxHeight:'100vh',
+    maxHeight: '100vh',
     backgroundColor: "#000000",
-    overflowY:'scroll',
+    overflowY: 'scroll',
     paddingBottom: "55rem"
 
 
@@ -117,6 +118,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PersistentDrawerLeft() {
+
+  const router = useRouter();
+
+  console.log(router.query.fileId);
 
   const dispatch = useDispatch();
 
@@ -235,29 +240,29 @@ export default function PersistentDrawerLeft() {
         <List classname={classes.listColor}>
           {sideFileData.map((text) => (
 
-            <ListItem   style={{
-              marginBottom:'.2rem',
-                border:` 3px solid ${text.color}`
-                
+            <ListItem style={{
+              marginBottom: '.2rem',
+              border: ` 3px solid ${text.color}`
 
 
-               }
-                 }  button key={text.id} 
-                 onClick={
-              // addCardHandler
-              () => {
-                dispatch(addComponentActions.addComponent(
-                  {
-                    id: uuidv4(),
-                    sideBarObject:text
-                  }
 
-                ))
-              }
-            }>
+            }
+            } button key={text.id}
+              onClick={
+                // addCardHandler
+                () => {
+                  dispatch(addComponentActions.addComponent(
+                    {
+                      id: uuidv4(),
+                      sideBarObject: text
+                    }
+
+                  ))
+                }
+              }>
 
 
-              <ListItemText  primary={text.containerName} />
+              <ListItemText primary={text.containerName} />
             </ListItem>
           ))}
         </List>
