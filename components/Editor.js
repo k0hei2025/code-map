@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 // import { Dispatch } from 'react-redux';
@@ -8,55 +8,96 @@ import 'prismjs/components/prism-clike';
 // import reducer from '../store/editorDataSlice';
 import 'prismjs/components/prism-javascript';
 //  import { editorDataActions } from '../store/editorDataSlice';
-import {addCodeString} from '../store/editorDataSlice'
-const code = `function add(a, b) {
-  return a + b;
-}
+import { addCodeString } from '../store/editorDataSlice'
+const code = `Start Code here
 `;
- 
+
+
+
 class App extends React.Component {
+
+
   state = { code };
+
+
+  componentDidMount() {
+    console.log('props id of projectFiles', this.props.ids);
+
+
+
+  }
+
+
+
   render(props) {
+
+
+    console.log("props.allCode Object", this.props.allCodes);
+
+    console.log("props.id Container", this.props.idContainer[0].fileId)
+    console.log("props.id Container", this.props.idContainer[0].projectId)
+
+
+
+
+
 
     return (
       <Editor
         value={this.state.code}
         onValueChange={
-          code => 
-          {
+          code => {
             this.setState({ code })
             //  this.props.dispatch(addCodeString(code))
-            }
           }
-          onBlur={
-            ()=>{
-              this.props.dispatch(addCodeString(
-                // this.state.code
-                {
-                  id: this.props.boxId,
-                  code:this.state.code
-                }
-                ))
-            }
+        }
+        onBlur={
+          async () => {
+
+            this.props.dispatch(addCodeString(
+              // this.state.code
+              {
+                id: this.props.boxId,
+                code: this.state.code
+              }
+            ))
+
+            const data = fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${this.props.idContainer[0].projectId}/${this.props.idContainer[0].fileId}.json`, {
+              method: 'PATCH',
+              body: JSON.stringify({
+                fileCode: this.props.allCodes
+              }),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+
+            const resData = await data;
+            console.log(resData)
+
           }
+
+        }
 
         highlight={code => highlight(code, languages.js)}
         padding={10}
         style={{
           fontFamily: '"roboto", "roboto", monospace',
           fontSize: 12,
-         width:"300px",
-         overflowX:"auto"
+          width: "300px",
+          overflowX: "auto"
         }}
       />
     );
   }
 }
 
-const mapStateToProps = (state) => 
+const mapStateToProps = (state) =>
 ({
   // codestring: state.editor.codeString
-  codeData: state.editor.codeData    
+  allCodes: state.editor.allCodes,
+  ids: state.mapData.ids,
+  idContainer: state.mapData.idContainer
 });
 
 // const mapDispatchToProps = { addCodeString };

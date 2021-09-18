@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { mapDataAction } from '../../store/mapData'
 import { useDispatch, useSelector } from 'react-redux'
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -7,12 +7,67 @@ import classes from './AddFile.module.css'
 import { Grid } from '@material-ui/core'
 import Link from 'next/link';
 
+
 function AddFile(props) {
     const dispatch = useDispatch();
 
-    const deleteT = useSelector((state) => state.mapData.ids)
+    const projectId = useSelector((state) => state.fileStore.myProfile)
+    const dataContainer = useSelector((state) => state.mapData.dataContainer)
 
-    console.log('deleteT', deleteT)
+    const projectFilePerticularId = useSelector((state) => state.mapData.ids)
+
+
+
+
+
+    useEffect(() => {
+
+
+        dispatch(mapDataAction.idOFProjectFiles({
+            projectFileId: props.id
+        }))
+
+
+
+
+
+        console.log('project files ========> call in AddFile.jsx props.id ', props.id, props.projectFile)
+
+        console.log('===========>', props.projectFile)
+        console.log('add file project FIles props onme ------ ', props.projectFiles)
+
+
+        props.projectFileDataId.map(async (i) => {
+            if (i.id === projectId) {
+
+                props.projectFile.map(async (dataKey) => {
+
+                    console.log(dataKey)
+
+
+                    if (dataKey.id === props.id) {
+
+                        console.log('add file project FIles props onme ------ ', props.projectFiles, dataKey.id)
+
+                        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${i.id}/${props.projectFiles}.json`, {
+                            method: "DELETE",
+
+                        })
+
+                        const resData = await data.json();
+
+                        console.log(resData)
+
+                    }
+                })
+
+
+
+            }
+        })
+
+    }, [])
+
 
 
 
@@ -24,10 +79,46 @@ function AddFile(props) {
         }))
     }
     const deleteFileHandler = () => {
+
+        props.projectFileDataId.map(async (i) => {
+            if (i.id === projectId) {
+
+                props.projectFile.map(async (dataKey) => {
+
+                    console.log(dataKey)
+
+
+
+                    if (dataKey.id === props.id) {
+
+
+
+                        console.log('add file project FIles props onme ------ ', props.projectFiles, props.id)
+
+                        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${i.id}/${props.id}.json`, {
+                            method: "DELETE",
+                        })
+
+                        const resData = await data.json();
+
+                        console.log(resData)
+
+                    }
+                })
+
+
+
+            }
+        })
+
         dispatch(mapDataAction.deleteData({
 
             id: props.id
         }))
+
+
+
+
 
 
 

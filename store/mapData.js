@@ -5,14 +5,32 @@ const initalState = {
 
    dataContainer: [],
    title: 'Project',
-   ids: null
-
+   ids: 'conje',
+   idContainer: []
 }
 
 const mapData = createSlice({
    name: 'mapData',
    initialState: initalState,
    reducers: {
+
+      idStore(state, action) {
+
+         const data = {
+            projectId: action.payload.projectId,
+            fileId: action.payload.fileId,
+         }
+
+         state.idContainer.push(data)
+
+      }
+      ,
+
+
+      idOFProjectFiles(state, action) {
+         state.ids = action.payload.projectFileId
+      },
+
       addData(state, action) {
          const dataList = {
             id: action.payload.id,
@@ -26,11 +44,12 @@ const mapData = createSlice({
       },
       deleteData(state, action) {
 
-         state.ids = action.payload.id;
+
 
          state.dataContainer = state.dataContainer.filter(key => key.id !== action.payload.id)
 
          console.log(state.dataContainer)
+         console.log(state.dataContainer.fileId, state.dataContainer.projectId)
 
       }
 
