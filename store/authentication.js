@@ -1,19 +1,26 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { 
-               login : 'false',
-               signed : ''
+const initialState = {
+               login: 'false',
+               signed: '',
+               tokenId: ' ',
+               userId: ' '
 }
 
- const authSlice = createSlice({
-               name : 'auth',
-               initialState : initialState,
-               reducers : {
-                              isLogin(state ){
-                               state.login  = !state.login
+const authSlice = createSlice({
+               name: 'auth',
+               initialState: initialState,
+               reducers: {
+                              isLogin(state) {
+                                             state.login = !state.login
                               },
-                              
-                            
+
+                              tokenContainer(state, action) {
+                                             state.tokenId = action.payload.tokenId,
+                                                            state.userId = action.payload.userId
+                              }
+
+
 
                }
 })

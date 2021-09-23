@@ -28,17 +28,31 @@ export default function profile() {
 
    const projectId = useSelector((state) => state.fileStore.myProfile)
 
+
+               const token = useSelector((state) => state.auth.tokenId)
+               const userId = useSelector((state) => state.auth.userId)
+
+
+
+
+
    console.log('------projectId', projectId)
 
 
 
+          
+
    useEffect(() => {
+
+      console.log("token in profile.jsx" , token , userId) 
+
       const fileData = async () => {
+
 
 
          const dataObjectToArray = [];
 
-         const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
+         const data = await fetch('https://code-map-9f57c-default-rtdb.firebaseio.com/file.json?auth='+token);
 
 
 
