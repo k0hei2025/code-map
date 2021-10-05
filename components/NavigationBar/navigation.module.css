@@ -1,17 +1,86 @@
 .root {
-    display: flex;
+  display: flex;
 
-  }
-   .appIcon {
-    color: #F7EA00
-  }
-    .listColor {
-    background-color: red
-  }
-   /* .appBar {
-    background-color: #1C2431;
-    transition: transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp;
-      duration: theme.transitions.duration.leavingScreen
-    })
-  }, */
+}
+
+.appIcon {
+  color: #F7EA00;
+}
+
+.listColor {
+  background-color: red;
+}
+
+.appBar {
+  background-color: #1C2431;
+  /* transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen
+  }) */
+}
+.appBarShift {
+  width: calc(100% - 260px);
+  margin-left: 260px;
+  /* transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.easeOut,
+    duration: theme.transitions.duration.enteringScreen
+  }) */
+}
+.menuButton {
+  /* margin-right: theme.spacing(2) */
+  margin-right: 20px;
+}
+.hide {
+  display: none;
+}
+.nested {
+  /* paddingLeft: theme.spacing(4), */
+  padding-left: 40px;
+}
+.drawer {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.codeCenter {
+  background-color:black;
+  padding:2rem 20px ;
+  margin-top:3rem;
+  min-height:80vh;
+  max-height:90vh;
+  /* margin-bottom:1rem; */
+  overflow-y:scroll
+}
+.drawerPaper {
+  width: 260px;
+}
+.drawerHeader {
+  display: flex;
+
+  align-items: 'center';
+  /* padding: theme.spacing(0, 1), */
+  padding:0 20px;
+  /* // necessary for content to be below app bar */
+  /* ...theme.mixins.toolbar, */
+  justify-content: flex-end;
+}
+.content {
+  flex-grow: 1;
+  /* padding: theme.spacing(3), */
+  padding: 60px;
+  background-color: #1C2431;
+  /* transition: theme.transitions.create('margin', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen
+  }), */
+  margin-left: -260px;
+
+}
+.contentShift {
+
+  /* transition: theme.transitions.create('margin', {
+    easing: theme.transitions.easing.easeOut,
+    duration: theme.transitions.duration.enteringScreen
+  }), */
+  margin-left: 0;
+}

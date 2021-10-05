@@ -49,21 +49,29 @@ export default function projectFile() {
 
 
   return (
-    <Grid container >
-      <Grid item md={12} sm={12}>
-        <form onSubmit={postFileHandler}>
-          <TextField id="outlined-basic" label="FileName" variant="outlined" value={state} onChange={(event) => {
-            setState(event.target.value)
-          }} />
-          <button onClick={postFileHandler} style={{
-            backgroundColor: 'yellow',
-            fontWeight: 'bold',
-            padding: '2rem',
-            borderRadius: '1rem'
-          }}> Submit </button>
-          <Link style={{ backgroundColor: 'yellow', padding: '1rem' }} href='./myProfile'>Go back to Profile</Link>
-        </form>
-      </Grid>
-    </Grid>
+    <div>
+    <div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)'}}>
+      <form onSubmit={postFileHandler}
+      style={{display:'flex',flexDirection:'column',alignItems:'center'}}
+      >
+        <input id="outlined-basic" placeholder='Enter File Name' style={{height:'40px',width:'300px',marginBottom:'40px'}} value={state} onChange={(event) => {
+          setState(event.target.value)
+        }} />
+        <button onClick={postFileHandler} style={{
+          backgroundColor: 'yellow',
+          fontWeight: 'bold',
+          padding: '1rem 2rem',
+          borderRadius: '5px',
+          letterSpacing:'1px',
+          textTransform:'uppercase',
+          fontSize:'15px',
+          fontWeight:'500',
+          border:'none',
+          marginBottom:'10px'
+        }}> Submit </button>
+        <Link href='./myProfile'><span style={{color:'white',letterSpacing:'1px'}}>Go back to Profile</span></Link>
+      </form>
+    </div>
+  </div>
   )
 }
