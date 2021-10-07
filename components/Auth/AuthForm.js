@@ -3,11 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import classes from './AuthForm.module.css';
 import { authAction } from '../../store/authentication'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter, Router } from 'next/router'
 
 const AuthForm = () => {
   // const [isLogin, setIsLogin] = useState(true);
   const apiKey = 'AIzaSyDFgj3cq2lSpCOWefurgUeEGj1KHT1-Nck'
 
+  const route = Router;
+  const router = useRouter();
 
 
   const emailRef = useRef();
@@ -80,6 +83,7 @@ const AuthForm = () => {
         userId: resData.localId,
       }))
 
+      router.push("/myProfile")
 
 
     } else {

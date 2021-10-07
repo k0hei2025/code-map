@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 
 
 
-import Navigation from '../../components/NavigationBar/UpperNavigationBar'
+import Navigation from '../../components/NavigationBar/upperNavigationBar'
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
@@ -213,10 +213,10 @@ export default function index() {
 
       <div className={classes.contain} maxWidth='xl'>
 
-        <input type='text' style={{height:"40px",width:'20%',letterSpacing:'2px',paddingLeft:'5px',marginBottom:'2rem'}} placeholder='File Name' ref={fileName} /><br />
-        <Button style={{marginRight:'1rem',fontWeight:300,fontSize:'17px',letterSpacing:'2px'}} variant='contained' onClick={addDataHandler
+        <input type='text' style={{ height: "40px", width: '20%', letterSpacing: '2px', paddingLeft: '5px', marginBottom: '2rem' }} placeholder='File Name' ref={fileName} /><br />
+        <Button style={{ marginRight: '1rem', fontWeight: 300, fontSize: '17px', letterSpacing: '2px' }} variant='contained' onClick={addDataHandler
         } color='primary'> Add File </Button>
-        <Button variant='contained' style={{fontWeight:300,fontSize:'17px',letterSpacing:'2px'}} color='primary' onClick={saveHandler}>Save</Button>
+        <Button variant='contained' style={{ fontWeight: 300, fontSize: '17px', letterSpacing: '2px' }} color='primary' onClick={saveHandler}>Save</Button>
 
         <div className={classes.enclose}>
           {projectFile.map((val) => {
@@ -225,7 +225,7 @@ export default function index() {
             )
           })}
         </div>
-  
+
       </div>
     </div>
   )
