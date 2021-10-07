@@ -30,7 +30,8 @@ export default function header() {
                                            <b className={classes.titles}>Team</b>
                                  </Grid>
                                  <Grid item xs={3} md={1} className={classes.paper} >
-                                           <b className={classes.titles}>Signin</b>
+                                           {/* <b className={classes.titles}>Signin</b> */}
+                                           <a href="/Authentication" > <b className={classes.titles}>Signin</b></a>
                                  </Grid>
                                </Grid>
                                </div>               

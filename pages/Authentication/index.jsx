@@ -6,7 +6,7 @@ import Navigation from '../../components/NavigationBar/upperNavigationBar'
 export default function index() {
                return (
                               <Fragment>
-                            <Navigation/>
+                            {/* <Navigation/> */}
                               <Auth/>
                               </Fragment>
                )

@@ -27,7 +27,7 @@ const dispatch=useDispatch()
           >
             <legend>
               {val.sideBarObject.containerName}
-              <RemoveCircleOutlineIcon onClick={()=>{
+              <RemoveCircleOutlineIcon style={{color:'red',marginLeft:'5px',transform:'translateY(5px)'}} onClick={()=>{
                 dispatch(addComponentActions.removeComponent({val}))
                 // console.log(new Date().getTime())
               }} />

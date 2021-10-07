@@ -21,7 +21,7 @@ import { sideFileData } from './SidebarFileData.js'
 import { useDispatch, useSelector } from 'react-redux'
 import Box from '../Box'
 import { useRouter } from 'next/router'
-
+import classes from './navigation.module.css'
 import { addComponentActions } from '../../store/addComponentSlice';
 
 
@@ -34,88 +34,88 @@ const drawerWidth = 240;
 
 
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     display: 'flex',
 
-  },
+//   },
 
-  appIcon: {
-    color: "#F7EA00"
-  },
+//   appIcon: {
+//     color: "#F7EA00"
+//   },
 
-  listColor: {
-    backgroundColor: "red"
-  },
+//   listColor: {
+//     backgroundColor: "red"
+//   },
 
-  appBar: {
-    backgroundColor: '#1C2431',
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  hide: {
-    display: 'none'
-  },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
+//   appBar: {
+//     backgroundColor: '#1C2431',
+//     transition: theme.transitions.create(['margin', 'width'], {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen
+//     })
+//   },
+//   appBarShift: {
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     marginLeft: drawerWidth,
+//     transition: theme.transitions.create(['margin', 'width'], {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen
+//     })
+//   },
+//   menuButton: {
+//     marginRight: theme.spacing(2)
+//   },
+//   hide: {
+//     display: 'none'
+//   },
+//   nested: {
+//     paddingLeft: theme.spacing(4),
+//   },
+//   drawer: {
+//     width: drawerWidth,
+//     flexShrink: 0,
+//   },
 
-  codeCenter: {
-    maxHeight: '100vh',
-    backgroundColor: "#000000",
-    overflowY: 'scroll',
-    paddingBottom: "55rem"
+//   codeCenter: {
+//     maxHeight: '100vh',
+//     backgroundColor: "#000000",
+//     overflowY: 'scroll',
+//     paddingBottom: "55rem"
 
 
-  },
-  drawerPaper: {
-    width: drawerWidth
-  },
-  drawerHeader: {
-    display: 'flex',
+//   },
+//   drawerPaper: {
+//     width: drawerWidth
+//   },
+//   drawerHeader: {
+//     display: 'flex',
 
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end'
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    marginLeft: -drawerWidth,
+//     alignItems: 'center',
+//     padding: theme.spacing(0, 1),
+//     // necessary for content to be below app bar
+//     ...theme.mixins.toolbar,
+//     justifyContent: 'flex-end'
+//   },
+//   content: {
+//     flexGrow: 1,
+//     padding: theme.spacing(3),
+//     transition: theme.transitions.create('margin', {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen
+//     }),
+//     marginLeft: -drawerWidth,
 
-  },
-  contentShift: {
+//   },
+//   contentShift: {
 
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    }),
-    marginLeft: 0
-  }
-}));
+//     transition: theme.transitions.create('margin', {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen
+//     }),
+//     marginLeft: 0
+//   }
+// }));
 
 export default function PersistentDrawerLeft() {
 
@@ -138,7 +138,7 @@ export default function PersistentDrawerLeft() {
   }
 
 
-  const classes = useStyles();
+  // const classes = useStyles();
   const theme = useTheme();
 
 
@@ -175,10 +175,12 @@ export default function PersistentDrawerLeft() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+            style={{backgroundColor:'#1C2431'}}
         position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
+        // className={clsx(classes.appBar, {
+        //   [classes.appBarShift]: open
+        // })}
+        className={classes.appBar}
       >
         <Toolbar>
           <IconButton
@@ -186,9 +188,10 @@ export default function PersistentDrawerLeft() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide, classes.appIcon)}
+            className={classes.menuButton}
+            // className={clsx(classes.menuButton, open && classes.hide, classes.appIcon)}
           >
-            <MenuIcon />
+            <MenuIcon style={{color:'yellow'}} />
           </IconButton>
 
           <Grid md='9' sm='2' >
@@ -223,9 +226,9 @@ export default function PersistentDrawerLeft() {
         variant="persistent"
         anchor="left"
         open={open}
-        classes={{
-          paper: classes.drawerPaper
-        }}
+        // classes={{
+        //   paper: classes.drawerPaper
+        // }}
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
@@ -272,9 +275,10 @@ export default function PersistentDrawerLeft() {
 
       </Drawer>
       <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open
-        })}
+        // className={clsx(classes.content, {
+        //   [classes.contentShift]: open
+        // })}
+        className={classes.content}
       >
         <div className={classes.drawerHeader} />
         <Container maxWidth='xl'>

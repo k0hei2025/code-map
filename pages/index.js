@@ -2,9 +2,12 @@ import React, { Fragment, useEffect } from 'react'
 import Box from '../components/Box'
 import styles from '../styles/Home.module.css'
 import NavigationBar from '../components/NavigationBar/Navigation.jsx'
-import Footer from '../UX/footer'
+// import Footer from '../UX/footer'
 import { Router } from 'next/router'
-
+import FrontHend from '../UX/frontPage';
+import Header from '../UX/header'
+import Footer from '../UX/footer'
+import Card from '../UX/card'
 function WorkSpace() {
 
   // const { pathname } = Router
@@ -24,9 +27,14 @@ function WorkSpace() {
 
   return (
 
-    <div className={styles.frame} >
+    <div 
+    // className={styles.frame}
+     >
 
-      <h1> Home Page</h1>
+<Header />
+                                             <FrontHend />
+                                             <Card />
+                                             <Footer />
 
 
     </div>
