@@ -52,7 +52,7 @@ export default function profile() {
 
          const dataObjectToArray = [];
 
-         const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
+         const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json?auth=${token}`);
 
 
 
