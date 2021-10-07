@@ -37,10 +37,10 @@ export default function frontPage() {
 
                                                 <Grid container  >
                                                 <Grid xs={6} md={4} ></Grid>   
-                                               <Grid xs={12} md={4} > <h2 style={{color:'white',letterSpacing:'1px'}}>  All your files in one secure location, accessible anywhere.</h2>
+                                               <Grid xs={12} md={4} > <h2 style={{color:'white',letterSpacing:'1px'}}>Managing Projects Redefined, Collaborate and Present Your Code</h2>
 
-       <b style={{color:'rgba(255,255,255,0.5)',fontweight:'lighter',letterSpacing:'1px',fontSize:'14px'}}>Fylo stores all your most important files in one secure location. Access them wherever 
-  you need, share and collaborate with friends family, and co-workers.</b>
+       <b style={{color:'rgba(255,255,255,0.5)',fontweight:'lighter',letterSpacing:'1px',fontSize:'14px'}}>CodeMap stores and Presents your code in one secure location. Access them wherever 
+  you need, share and collaborate with co-workers.</b>
                                                     
                                               
                                                 </Grid> 
@@ -96,8 +96,7 @@ export default function frontPage() {
                                 <Image src={anyFileIcon} height={60 } width={80} />
                                 <h3 style={{color:'white'}}><b> Store any type of file </b></h3>
                                 <p style={{color:'rgba(255,255,255,0.5)'}}>
-  Whether you're sharing holidays photos or work documents, Fylo has you covered allowing for all 
-  file types to be securely stored and shared.
+  Present Your Code and Manage the flow of your project with CodeMap.
                                    </p>
                                 </Grid>
                                   <Grid container className={classes.productive}>
@@ -109,13 +108,12 @@ export default function frontPage() {
                                   <Grid md={6} xs={12}  className={classes.productive}>
                                   <h1 style={{color:'white'}}> <b> Stay productive, wherever you are </b> </h1>
 
-                 <p style={{color:'rgba(255,255,255,0.5)'}}>Never let location be an issue when accessing your files. Fylo has you covered for all of your file 
+                 <p style={{color:'rgba(255,255,255,0.5)'}}>Never let location be an issue when accessing your files. CodeMap has you covered for all of your file 
   storage needs. <br />
                  <br/>
-  Securely share files and folders with friends, family and colleagues for live collaboration. No email 
-  attachments required. <br /></p>
+  Securely work on your Code and share files and folders with friends, family and colleagues for live collaboration.<br /></p>
    <a href="" style={{display:'flex',alignItems:'center'}}>
-   <p className={classes.text} >See how Fylo works</p> <Image src={leftArrow} width={20} height={20}/>  </a>
+   <p className={classes.text} >See how CodeMap works</p> <Image src={leftArrow} width={20} height={20}/>  </a>
 </Grid>
   
                                   </Grid> 

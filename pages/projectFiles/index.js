@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 
 
 
-// import Navigation from '../../components/NavigationBar/Navigation'
+import Navigation from '../../components/NavigationBar/UpperNavigationBar'
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
@@ -202,51 +202,30 @@ export default function index() {
     ))
 
 
-
-
-
-
-
-
-
-
-
-
     console.log(filenames);
 
-    // myProfile/projectFiles?id="rhewhrewuiewrew"/fileCode
 
   }
 
-
-  //  const classes  = useStyles();
   return (
     <div>
-      {/* <Navigation /> */}
+      <Navigation />
+
       <div className={classes.contain} maxWidth='xl'>
 
-        <input type='text' placeholder='fileName' ref={fileName} />
+        <input type='text' style={{height:"40px",width:'20%',letterSpacing:'2px',paddingLeft:'5px',marginBottom:'2rem'}} placeholder='File Name' ref={fileName} /><br />
+        <Button style={{marginRight:'1rem',fontWeight:300,fontSize:'17px',letterSpacing:'2px'}} variant='contained' onClick={addDataHandler
+        } color='primary'> Add File </Button>
+        <Button variant='contained' style={{fontWeight:300,fontSize:'17px',letterSpacing:'2px'}} color='primary' onClick={saveHandler}>Save</Button>
 
-
-        {/* {!showTitle && <h1 onClick={()=>{setShowTitle(!showTitle)}}>{title}</h1>}
-                                     {showTitle && <input type='text' value={title} onBlur={()=>{
-                                       setShowTitle(!showTitle)}
-                                       }
-                                       onChange={(event)=>{
-                                         dispatch(mapDataAction.changeTitle(event.target.value))
-                                       }}
-                                       />} */}
-        <div className={classes1.list}>
+        <div className={classes.enclose}>
           {projectFile.map((val) => {
             return (
               <AddFile className={classes1.listItem} projectFileDataId={dataSet} projectFile={projectFile} id={val.id} fileName={val.files} />
             )
           })}
         </div>
-        <Button variant='contained' onClick={addDataHandler
-        } color='primary'> Add File </Button>
-        <Button variant='contained' color='primary' onClick={saveHandler}>Save</Button>
-
+  
       </div>
     </div>
   )

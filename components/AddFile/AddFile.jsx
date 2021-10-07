@@ -133,21 +133,13 @@ function AddFile(props) {
     const [inputValue, setInputValue] = useState('')
     return (
         <div className={classes.enclosingaddFilediv} onBlur={() => { setShowInput(false) }}>
-            {/* {!showInput && <p onClick={()=>{setShowInput(true)}} key={props.id}>
-            {inputValue}
-            </p>}
-           {showInput && <input className='addFile-div' type='text' value={inputValue} onChange={(event)=>{
-               setInputValue(event.target.value)
-           }} 
-          onBlur={blurHandler}
 
-           />} */}
-            <h1>{props.fileName}</h1>
+            <h1 style={{color:'white'}}>{props.fileName}</h1>
             <Grid container spacing >
                 <Grid md={4}></Grid>
                 <Grid md={2}>
                     {!showInput &&
-                        <DeleteIcon style={{ color: 'red', backgroundColor: 'black', fontSize: '30px' }} onClick={deleteFileHandler} />
+                        <DeleteIcon style={{ color: 'red', fontSize: '30px' }} onClick={deleteFileHandler} />
                     }
                 </Grid>
                 <Grid md={2} >
