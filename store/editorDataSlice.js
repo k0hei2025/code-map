@@ -16,7 +16,10 @@ const editorDataSlice = createSlice({
     addCodeString(state, action) {
       const newCode = {
         id: action.payload.id,
-        code: action.payload.code
+        code: action.payload.code,
+        colorId: action.payload.colorId,
+        color: action.payload.color,
+        containerName: action.payload.containerName,
       }
       let flag = 0;
 

@@ -53,13 +53,7 @@ const mapData = createSlice({
 
       }
 
-      //   console.log('after the condition', current (state.dataContainer))
 
-      //  newContainer = state.dataContainer.splice(idx, 1);
-
-      // state.dataContainer = newContainer;
-
-      // console.log(state.dataContainer)
 
       ,
       changeTitle(state, action) {

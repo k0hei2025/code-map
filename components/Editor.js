@@ -9,8 +9,7 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 //  import { editorDataActions } from '../store/editorDataSlice';
 import { addCodeString } from '../store/editorDataSlice'
-const code = `Start Code here
-`;
+const code = "Enter Your Code";
 
 
 
@@ -23,6 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('props id of projectFiles', this.props.ids);
 
+    this.setState({ code: this.props.code });
 
 
   }
@@ -30,6 +30,8 @@ class App extends React.Component {
 
 
   render(props) {
+
+
 
 
     console.log("props.allCode Object", this.props.allCodes);
@@ -58,14 +60,18 @@ class App extends React.Component {
               // this.state.code
               {
                 id: this.props.boxId,
-                code: this.state.code
+                code: this.state.code,
+                colorId: this.props.colorId,
+                color: this.props.color,
+                containerName: this.props.containerName,
               }
             ))
 
             const data = fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${this.props.idContainer[0].projectId}/${this.props.idContainer[0].fileId}.json`, {
               method: 'PATCH',
               body: JSON.stringify({
-                fileCode: this.props.allCodes
+                fileCode: this.props.allCodes,
+
               }),
               headers: {
                 'Content-Type': 'application/json'
@@ -97,10 +103,12 @@ const mapStateToProps = (state) =>
   // codestring: state.editor.codeString
   allCodes: state.editor.allCodes,
   ids: state.mapData.ids,
-  idContainer: state.mapData.idContainer
+  idContainer: state.mapData.idContainer,
+  allComponents: state.component.component
 });
 
 // const mapDispatchToProps = { addCodeString };
 
 // export default App
+
 export default connect(mapStateToProps)(App);
