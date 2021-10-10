@@ -4,7 +4,7 @@ import {Grid , makeStyles} from '@material-ui/core'
 
  import classes from '../UXStyle/frontPage.module.css'
  
-import logo from './logo.svg'
+import logo from './logo.png'
 
 
 

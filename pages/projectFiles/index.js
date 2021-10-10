@@ -8,7 +8,7 @@ import Map from '../../components/mapData'
 import classes1 from '../../components/mapData.module.css'
 import AddFile from '../../components/AddFile/AddFile'
 import { useRouter } from 'next/router'
-
+// import classes from './project.module.css'
 
 
 import Navigation from '../../components/NavigationBar/upperNavigationBar'
@@ -35,7 +35,7 @@ export default function index() {
   let count = 0;
   const dataSet = useSelector((state) => state.mapData.dataContainer)
 
-
+const userId=useSelector(state=>state.auth.userId)
 
 
   const title = useSelector(state => state.mapData.title)
@@ -53,7 +53,7 @@ export default function index() {
 
 
 
-    const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${projectId}.json`);
+    const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${projectId}.json`);
 
     const resData = await data.json();
 
@@ -92,7 +92,7 @@ export default function index() {
 
       const dataObjectToArray = [];
 
-      const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
+      const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}.json`);
 
 
 
@@ -156,7 +156,7 @@ export default function index() {
 
 
 
-        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${i.id}.json`, {
+        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${i.id}.json`, {
 
 
           method: 'POST',
@@ -214,16 +214,19 @@ export default function index() {
 
       <div className={classes.contain} maxWidth='xl'>
 
-        <input type='text' style={{ height: "40px", width: '20%', letterSpacing: '2px', paddingLeft: '5px', marginBottom: '2rem' }} placeholder='File Name' ref={fileName} /><br />
-        <Button style={{ marginRight: '1rem', fontWeight: 300, fontSize: '17px', letterSpacing: '2px' }} variant='contained' onClick={addDataHandler
+        <input type='text' className={classes.nameInput}  placeholder='File Name' ref={fileName} /><br />
+        <Button className='addButton' variant='contained' onClick={addDataHandler
         } color='primary'> Add File </Button>
-        <Button variant='contained' style={{ fontWeight: 300, fontSize: '17px', letterSpacing: '2px' }} color='primary' onClick={saveHandler}>Save</Button>
+        <Button variant='contained' className='addButton' color='primary' onClick={saveHandler}>Save</Button>
 
         <div className={classes.enclose}>
           {projectFile.map((val) => {
-            return (
+            if(val.files){
+              return (
               <AddFile className={classes1.listItem} projectFileDataId={dataSet} projectFile={projectFile} id={val.id} fileName={val.files} />
             )
+            }
+
           })}
         </div>
 

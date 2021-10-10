@@ -14,3 +14,15 @@
     align-items: center;
     margin: 3rem 0;
 }
+
+.nameInput{ height: 40px;
+     width: 20%;
+      letter-spacing: 2px;
+       padding-left: 5px;
+        margin-bottom: 2rem;
+     }
+
+.addButton{ margin-right: 1rem; 
+    font-weight: 300;
+     font-size: 17px;
+      letter-spacing: 2px;}

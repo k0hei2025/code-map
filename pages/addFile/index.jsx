@@ -26,7 +26,7 @@ export default function projectFile() {
   const postFileHandler = async (event) => {
     event.preventDefault();
 
-    const data = await fetch('https://code-map-9f57c-default-rtdb.firebaseio.com/file.json?auth='+token,
+    const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}.json`,
       {
         method: 'POST',
         body: JSON.stringify({

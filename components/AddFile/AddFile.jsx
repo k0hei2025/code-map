@@ -15,7 +15,7 @@ function AddFile(props) {
     const dataContainer = useSelector((state) => state.mapData.dataContainer)
 
     const projectFilePerticularId = useSelector((state) => state.mapData.ids)
-
+    const userId=useSelector(state=>state.auth.userId)
 
 
 
@@ -49,7 +49,7 @@ function AddFile(props) {
 
                         console.log('add file project FIles props onme ------ ', props.projectFiles, dataKey.id)
 
-                        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${i.id}/${props.projectFiles}.json`, {
+                        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${i.id}/${props.projectFiles}.json`, {
                             method: "DELETE",
 
                         })
@@ -95,7 +95,7 @@ function AddFile(props) {
 
                         console.log('add file project FIles props onme ------ ', props.projectFiles, props.id)
 
-                        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${i.id}/${props.id}.json`, {
+                        const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${i.id}/${props.id}.json`, {
                             method: "DELETE",
                         })
 
