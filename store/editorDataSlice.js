@@ -4,6 +4,7 @@ const initialState = {
   codeString: '',
   allCodes: [],
   codeData: {},
+  boxStorge: []
 
 };
 
@@ -38,6 +39,13 @@ const editorDataSlice = createSlice({
       console.log(`redux code box`, current(state))
     },
 
+    wrapContainer(state, action) {
+      state.boxStorge.push({
+        boxContainer: action.payload.boxContainer,
+        code: action.payload.codeS,
+      })
+    }
+
   },
 
 })
@@ -45,5 +53,5 @@ const editorDataSlice = createSlice({
 // export const editorDataReducer= editorDataSlice.reducer;
 
 const { actions, reducer } = editorDataSlice;
-export const { addCodeString } = actions;
+export const { addCodeString, wrapContainer } = actions;
 export default reducer;

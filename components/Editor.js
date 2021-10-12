@@ -8,7 +8,7 @@ import 'prismjs/components/prism-clike';
 // import reducer from '../store/editorDataSlice';
 import 'prismjs/components/prism-javascript';
 //  import { editorDataActions } from '../store/editorDataSlice';
-import { addCodeString } from '../store/editorDataSlice'
+import { addCodeString, wrapContainer } from '../store/editorDataSlice'
 const code = "Enter Your Code";
 
 
@@ -23,6 +23,9 @@ class App extends React.Component {
     console.log('props id of projectFiles', this.props.ids);
 
     this.setState({ code: this.props.allCodes });
+
+
+
 
 
   }
@@ -42,6 +45,7 @@ class App extends React.Component {
     console.log(this.props.allComponents, 'allComponents')
     console.log(this.props.allCodes)
 
+    console.log(this.props.boxStorge[this.props.boxStorge.length - 1], 'sgfsggfsfd-+_+_P_+_+_+')
 
 
     return (
@@ -65,14 +69,26 @@ class App extends React.Component {
               }
             ))
 
-            const data = fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${this.props.idContainer[0].projectId}/${this.props.idContainer[0].fileId}.json`, {
+            this.props.dispatch(wrapContainer(
+
+              {
+                boxContainer: this.props.allComponents,
+                codeS: this.props.allCodes,
+              }
+            ))
+
+
+            const data = fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${this.props.userId}/${this.props.idContainer[0].projectId}/${this.props.idContainer[0].fileId}.json`, {
               method: 'PATCH',
               body: JSON.stringify({
-                fileCode: {
-                  code: this.props.allCodes,
-                  containerBox: this.props.allComponents
-                },
+                // fileCode: {
+                //   code: this.props.allCodes,
+                //   containerBox: this.props.allComponents
+                // },
 
+                fileCode: {
+                  code: this.props.boxStorge[this.props.boxStorge.length - 1]
+                }
               }),
               headers: {
                 'Content-Type': 'application/json'
@@ -105,7 +121,9 @@ const mapStateToProps = (state) =>
   allCodes: state.editor.allCodes,
   ids: state.mapData.ids,
   idContainer: state.mapData.idContainer,
-  allComponents: state.component.components
+  allComponents: state.component.components,
+  userId: state.auth.userId,
+  boxStorge: state.editor.boxStorge,
 });
 
 // const mapDispatchToProps = { addCodeString };

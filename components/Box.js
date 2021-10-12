@@ -14,38 +14,55 @@ function Box(props) {
 
   const idContainers = useSelector((state) => state.mapData.idContainer)
 
+  const userId = useSelector(state => state.auth.userId)
+
   const [fileCode, setFileCode] = useState([]);
 
-  // useEffect(async () => {
+  useEffect(async () => {
 
-  //   console.log("props.", idContainers)
+    console.log("props.", idContainers)
 
-  //   const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${idContainers[0].projectId}/${idContainers[0].fileId}/fileCode.json`);
-
-  //   const resData = await data.json();
-  //   console.log('fetch data of fileCode', resData);
-
-  //   const arr = [];
-
-  //   for (let i in resData) {
-  //     arr.push({
-  //       colorId: resData[i].colorId,
-  //       code: resData[i].code,
-  //       color: resData[i].color,
-  //       containerName: resData[i].containerName,
-
-  //     })
-
-  //   }
-  //   setFileCode(arr)
-
-  //   console.log(`allComponents`, allComponents)
+    const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${idContainers[0].projectId}/${idContainers[0].fileId}/fileCode/code.json`);
 
 
-  // }, [])
+    const resData = await data.json();
+    // console.log('fetch data of fileCode', resData.containerBox[0].sideBarObject.id, resData.code[0].id);
 
 
-  console.log(`allComponents`, allComponents)
+    console.log(resData, 'res__________________________---------____>')
+
+    const arr = [];
+
+
+
+
+    // for (let j = 0; j < resData.code.length; j++) {
+    //   if (resData.code[j].id === resData.containerBox[j].sideBarObject.id) {
+    //     arr.push({
+    //       colorId: resData.containerBox[j].sideBarObject.id,
+    //       code: resData.code[j].code,
+    //       color: resData.containerBox[j].sideBarObject.color,
+    //       containerName: resData.containerBox[j].sideBarObject.containerName,
+
+    //     })
+
+    //   }
+    //   // console.log('asddddddd', resData.code[j].id, resData.containerBox[j].sideBarObject.id)
+    // }
+
+
+    // console.log(resData.code[0], ' 2333')
+
+
+    // setFileCode(arr)
+
+    console.log(`allComponents--------------------___>`, arr)
+
+
+  }, [])
+
+
+  // console.log(`allComponents`, allComponents)
 
 
   return (

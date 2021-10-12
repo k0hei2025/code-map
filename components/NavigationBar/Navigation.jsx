@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -119,13 +119,21 @@ const drawerWidth = 240;
 
 export default function PersistentDrawerLeft() {
 
+
+
+
   const router = useRouter();
 
   console.log(router.query.fileId);
 
   const dispatch = useDispatch();
+  const allCodes = useSelector((state)=>state.editor.allCodes)
 
+    console.log(allCodes , 'sdadddddddddddddddc akk cides')
 
+    // useEffect(()=>{})
+
+  
   const addCardHandler = () => {
     dispatch(addComponentActions.addComponent(
 
@@ -257,7 +265,8 @@ export default function PersistentDrawerLeft() {
                   dispatch(addComponentActions.addComponent(
                     {
                       id: uuidv4(),
-                      sideBarObject: text
+                      sideBarObject: text,
+                     
                     }
 
                   ))
