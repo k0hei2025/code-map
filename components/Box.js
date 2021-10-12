@@ -16,54 +16,55 @@ function Box(props) {
 
   const [fileCode, setFileCode] = useState([]);
 
-  useEffect(async () => {
+  // useEffect(async () => {
 
-    console.log("props.", idContainers)
+  //   console.log("props.", idContainers)
 
-    const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${idContainers[0].projectId}/${idContainers[0].fileId}/fileCode.json`);
+  //   const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${idContainers[0].projectId}/${idContainers[0].fileId}/fileCode.json`);
 
-    const resData = await data.json();
-    console.log('fetch data of fileCode', resData);
+  //   const resData = await data.json();
+  //   console.log('fetch data of fileCode', resData);
 
-    const arr = [];
+  //   const arr = [];
 
-    for (let i in resData) {
-      arr.push({
-        colorId: resData[i].colorId,
-        code: resData[i].code,
-        color: resData[i].color,
-        containerName: resData[i].containerName,
+  //   for (let i in resData) {
+  //     arr.push({
+  //       colorId: resData[i].colorId,
+  //       code: resData[i].code,
+  //       color: resData[i].color,
+  //       containerName: resData[i].containerName,
 
-      })
+  //     })
 
-    }
-    setFileCode(arr)
+  //   }
+  //   setFileCode(arr)
 
-    console.log(`allComponents`, idContainers[0].projectId)
-
-
-  }, [])
+  //   console.log(`allComponents`, allComponents)
 
 
+  // }, [])
+
+
+  console.log(`allComponents`, allComponents)
 
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
 
 
-      {fileCode.map((val) => {
+      {allComponents.map((val) => {
 
 
         // console.log(val)
         return (
           <fieldset
-            // key={val.sideBarObject.id}
-            key={val.colorId}
+            key={val.sideBarObject.id}
+            // key={val.colorId}
             className="code-edit-container"
-            style={{ color: `${val.color}`, border: `3px solid ${val.color}` }}
+            style={{ color: `${val.sideBarObject.color}`, border: `3px solid ${val.sideBarObject.color}` }}
           >
             <legend>
-              {val.containerName}
+              {val.sideBarObject.containerName}
               <RemoveCircleOutlineIcon style={{ color: 'red', marginLeft: '5px', transform: 'translateY(5px)' }} onClick={() => {
                 dispatch(addComponentActions.removeComponent({ val }))
                 // console.log(new Date().getTime())
@@ -71,7 +72,8 @@ function Box(props) {
               {/* </button> */}
               {/* } */}
             </legend>
-            <EditorComponent borderColor={val.color} language='javascript' boxId={val.colorId} colorId={val.colorId} color={val.color} containerName={val.containerName} code={val.code} />
+            {/* */}
+            <EditorComponent borderColor={val.sideBarObject.color} language='javascript' boxId={val.sideBarObject.id} colorId={val.colorId} color={val.color} containerName={val.containerName} code={val.code} />
 
           </fieldset>
 

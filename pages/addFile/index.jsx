@@ -3,6 +3,7 @@ import { Grid, TextField } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { actionFileStore, fileStoreSlice } from '../../store/addFile'
 import Link from 'next/link'
+import router from 'next/router'
 export default function projectFile() {
 
 
@@ -38,6 +39,11 @@ export default function projectFile() {
       })
     const resData = await data.json();
     console.log(resData);
+              
+    if(state!==''){
+           router.push('/myProfile')
+    }
+
 
 
 
@@ -56,6 +62,7 @@ export default function projectFile() {
       >
         <input id="outlined-basic" placeholder='Enter File Name' style={{height:'40px',width:'300px',marginBottom:'40px'}} value={state} onChange={(event) => {
           setState(event.target.value)
+   
         }} />
         <button onClick={postFileHandler} style={{
           backgroundColor: 'yellow',

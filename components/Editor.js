@@ -22,7 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('props id of projectFiles', this.props.ids);
 
-    this.setState({ code: this.props.code });
+    this.setState({ code: this.props.allCodes });
 
 
   }
@@ -34,13 +34,13 @@ class App extends React.Component {
 
 
 
-    console.log("props.allCode Object", this.props.allCodes);
+    // console.log("props.allCode Object", this.props.allCodes);
 
-    console.log("props.id Container", this.props.idContainer[0].fileId)
-    console.log("props.id Container", this.props.idContainer[0].projectId)
+    // console.log("props.id Container", this.props.idContainer[0].fileId)
+    // console.log("props.id Container", this.props.idContainer[0].projectId)
 
-
-
+    console.log(this.props.allComponents, 'allComponents')
+    console.log(this.props.allCodes)
 
 
 
@@ -50,7 +50,7 @@ class App extends React.Component {
         onValueChange={
           code => {
             this.setState({ code })
-            //  this.props.dispatch(addCodeString(code))
+            // this.props.dispatch(addCodeString(code))
           }
         }
         onBlur={
@@ -61,16 +61,17 @@ class App extends React.Component {
               {
                 id: this.props.boxId,
                 code: this.state.code,
-                colorId: this.props.colorId,
-                color: this.props.color,
-                containerName: this.props.containerName,
+
               }
             ))
 
             const data = fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${this.props.idContainer[0].projectId}/${this.props.idContainer[0].fileId}.json`, {
               method: 'PATCH',
               body: JSON.stringify({
-                fileCode: this.props.allCodes,
+                fileCode: {
+                  code: this.props.allCodes,
+                  containerBox: this.props.allComponents
+                },
 
               }),
               headers: {
@@ -81,10 +82,10 @@ class App extends React.Component {
             const resData = await data;
             console.log(resData)
 
+            //   // }
           }
 
         }
-
         highlight={code => highlight(code, languages.js)}
         padding={10}
         style={{
@@ -104,7 +105,7 @@ const mapStateToProps = (state) =>
   allCodes: state.editor.allCodes,
   ids: state.mapData.ids,
   idContainer: state.mapData.idContainer,
-  allComponents: state.component.component
+  allComponents: state.component.components
 });
 
 // const mapDispatchToProps = { addCodeString };
