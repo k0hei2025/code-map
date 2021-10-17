@@ -1,6 +1,6 @@
 import '../components/Editor.css'
 import '../components/prism.css'
-import '../components/AddFile/AddFile.module.css' 
+import '../components/AddFile/AddFile.module.css'
 import { Provider } from 'react-redux'
 import { store } from '../store/store'
 import '../styles/globals.css'

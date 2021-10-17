@@ -1,38 +1,27 @@
-import { useEffect, useRef, useState } from 'react';
-
+import { useEffect, useRef } from 'react';
 import classes from './AuthForm.module.css';
 import { authAction } from '../../store/authentication'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter, Router } from 'next/router'
 
 const AuthForm = () => {
-  // const [isLogin, setIsLogin] = useState(true);
-  const apiKey = 'AIzaSyDFgj3cq2lSpCOWefurgUeEGj1KHT1-Nck'
 
+
+  const apiKey = 'AIzaSyDFgj3cq2lSpCOWefurgUeEGj1KHT1-Nck'
   const route = Router;
   const router = useRouter();
-
-
   const emailRef = useRef();
   const passwordRef = useRef();
-
   const login = useSelector((state) => state.auth.login)
-
   const token = useSelector((state) => state.auth.tokenId)
   const userId = useSelector((state) => state.auth.userId)
-
-
-  useEffect(() => {
-
-    console.log(`token`, token, `userId`, userId)
-
-  }, [token, userId])
-
-
 
   const dispatch = useDispatch();
 
 
+  // useEffect(() => {
+  // console.log(`token`, token, `userId`, userId)
+  // }, [token, userId])
 
   // { kind: "identitytoolkit#SignupNewUserResponse", idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFlNTJiOGQ4NTk4N2U1OW…HZnabOTTpLGiHMI0BCIim2r1J1blPMgQFde2crQB8KHQqKTCg", email: "test7@gmail.com", refreshToken: "ACzBnCgouLqLK-AyJab1qAYn09hTZZIDh9tO806RgZvAaGTdWi…cSjis6gvqQVyMbrcsubOYdNvV8xP0xd1lJi0SqrwOOIriBs_A", expiresIn: "3600", … }
   // email: "test7@gmail.com"
@@ -43,15 +32,10 @@ const AuthForm = () => {
   // refreshToken: "ACzBnCgouLqLK-AyJab1qAYn09hTZZIDh9tO806RgZvAaGTdWimpvwj1SZgsdkAvAvMUGVzFlzQPNY3n-AePAqW
 
 
-
-
-
-
-
   const switchAuthModeHandler = () => {
 
     dispatch(authAction.isLogin())
-    console.log(login)
+    // console.log(login)
   };
 
   const submitHandler = async (event) => {
@@ -76,7 +60,7 @@ const AuthForm = () => {
       })
 
       const resData = await data.json()
-      console.log(resData)
+      // console.log(resData)
 
       dispatch(authAction.tokenContainer({
         tokenId: resData.idToken,
@@ -102,7 +86,7 @@ const AuthForm = () => {
 
       const resData = await data.json();
 
-      console.log(resData);
+      // console.log(resData);
 
       dispatch(authAction.tokenContainer({
         tokenId: resData.idToken,

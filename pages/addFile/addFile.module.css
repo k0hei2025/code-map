@@ -1,0 +1,36 @@
+.addFileButton {
+    background-color: yellow;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-size:15px;
+    font-weight:500;
+    border:none;
+    margin-bottom:10px;
+}
+
+.addFileInput {
+    height:40px;
+    width:300px;
+    margin-bottom:40px;
+}
+
+.addFileForm {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.addFileDiv {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.addFileLink {
+    color:white;
+    letter-spacing:1px;
+}

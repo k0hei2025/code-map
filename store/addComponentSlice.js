@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   components: []
@@ -23,10 +23,10 @@ const addComponentSlice = createSlice({
         if (val.id !== action.payload.val.id) {
           newComponent.push(val)
         }
-        console.log(val.id !== action.payload.val.id)
+        // console.log(val.id !== action.payload.val.id)
       })
       state.components = newComponent
-      console.log(state.components)
+      // console.log(state.components)
     }
 
   },

@@ -15,7 +15,6 @@ const initialState = {
       fileStore: [],
       myProfile: '',
 
-
 }
 
 export const fileStoreSlice = createSlice({
@@ -41,6 +40,5 @@ export const fileStoreSlice = createSlice({
 })
 
 export const reducersFileStore = fileStoreSlice.reducer
-
 export const actionFileStore = fileStoreSlice.actions;
 

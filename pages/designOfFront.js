@@ -6,12 +6,12 @@ import Card from '../UX/card'
 
 
 export default function designOfFront() {
-               return (
-                              <>
-                                             <Header />
-                                             <FrontHend />
-                                             <Card />
-                                             <Footer />
-                              </>
-               )
+    return (
+        <>
+            <Header />
+            <FrontHend />
+            <Card />
+            <Footer />
+        </>
+    )
 }

@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 
 const initalState = {
@@ -48,8 +48,8 @@ const mapData = createSlice({
 
          state.dataContainer = state.dataContainer.filter(key => key.id !== action.payload.id)
 
-         console.log(state.dataContainer)
-         console.log(state.dataContainer.fileId, state.dataContainer.projectId)
+         // console.log(state.dataContainer)
+         // console.log(state.dataContainer.fileId, state.dataContainer.projectId)
 
       }
 
@@ -58,7 +58,7 @@ const mapData = createSlice({
       ,
       changeTitle(state, action) {
          state.title = action.payload;
-         console.log(state.title)
+         // console.log(state.title)
       }
 
    }
