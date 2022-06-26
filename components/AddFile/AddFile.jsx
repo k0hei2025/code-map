@@ -9,15 +9,13 @@ import Link from 'next/link';
 
 
 function AddFile(props) {
+
     const dispatch = useDispatch();
 
     const projectId = useSelector((state) => state.fileStore.myProfile)
     const dataContainer = useSelector((state) => state.mapData.dataContainer)
-
     const projectFilePerticularId = useSelector((state) => state.mapData.ids)
-    const userId=useSelector(state=>state.auth.userId)
-
-
+    const userId = useSelector(state => state.auth.userId)
 
 
     useEffect(() => {
@@ -27,23 +25,17 @@ function AddFile(props) {
             projectFileId: props.id
         }))
 
+        // console.log('project files ========> call in AddFile.jsx props.id ', props.id, props.projectFile)
 
-
-
-
-        console.log('project files ========> call in AddFile.jsx props.id ', props.id, props.projectFile)
-
-        console.log('===========>', props.projectFile)
-        console.log('add file project FIles props onme ------ ', props.projectFiles)
-
+        // console.log('===========>', props.projectFile)
+        // console.log('add file project FIles props onme ------ ', props.projectFiles)
 
         props.projectFileDataId.map(async (i) => {
             if (i.id === projectId) {
 
                 props.projectFile.map(async (dataKey) => {
 
-                    console.log(dataKey)
-
+                    // console.log(dataKey)
 
                     if (dataKey.id === props.id) {
 
@@ -55,13 +47,9 @@ function AddFile(props) {
                         })
 
                         const resData = await data.json();
-
-                        console.log(resData)
-
+                        // console.log(resData)
                     }
                 })
-
-
 
             }
         })
@@ -85,15 +73,11 @@ function AddFile(props) {
 
                 props.projectFile.map(async (dataKey) => {
 
-                    console.log(dataKey)
-
-
+                    // console.log(dataKey)
 
                     if (dataKey.id === props.id) {
 
-
-
-                        console.log('add file project FIles props onme ------ ', props.projectFiles, props.id)
+                        // console.log('add file project FIles props onme ------ ', props.projectFiles, props.id)
 
                         const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${i.id}/${props.id}.json`, {
                             method: "DELETE",
@@ -101,7 +85,7 @@ function AddFile(props) {
 
                         const resData = await data.json();
 
-                        console.log(resData)
+                        // console.log(resData)
 
                     }
                 })
@@ -116,25 +100,16 @@ function AddFile(props) {
             id: props.id
         }))
 
-
-
-
-
-
-
-
     }
-
-
-
 
 
     const [showInput, setShowInput] = useState(false)
     const [inputValue, setInputValue] = useState('')
+
     return (
         <div className={classes.enclosingaddFilediv} onBlur={() => { setShowInput(false) }}>
 
-            <h1 style={{color:'white'}}>{props.fileName}</h1>
+            <h1 style={{ color: 'white' }}>{props.fileName}</h1>
             <Grid container spacing >
                 <Grid md={4}></Grid>
                 <Grid md={2}>

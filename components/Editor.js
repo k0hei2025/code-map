@@ -1,52 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
-// import { Dispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import 'prismjs/components/prism-clike';
-// import { store } from '../store/store';
-// import reducer from '../store/editorDataSlice';
 import 'prismjs/components/prism-javascript';
-//  import { editorDataActions } from '../store/editorDataSlice';
 import { addCodeString, wrapContainer } from '../store/editorDataSlice'
+
+
+
 const code = "Enter Your Code";
-
-
 
 class App extends React.Component {
 
-
   state = { code };
-
 
   componentDidMount() {
     console.log('props id of projectFiles', this.props.ids);
 
     this.setState({ code: this.props.allCodes });
 
-
-
-
-
   }
-
 
 
   render(props) {
 
-
-
-
     // console.log("props.allCode Object", this.props.allCodes);
-
     // console.log("props.id Container", this.props.idContainer[0].fileId)
     // console.log("props.id Container", this.props.idContainer[0].projectId)
-
-    console.log(this.props.allComponents, 'allComponents')
-    console.log(this.props.allCodes)
-
-    console.log(this.props.boxStorge[this.props.boxStorge.length - 1], 'sgfsggfsfd-+_+_P_+_+_+')
-
+    // console.log(this.props.allComponents, 'allComponents')
+    // console.log(this.props.allCodes)
+    // console.log(this.props.boxStorge[this.props.boxStorge.length - 1], 'sgfsggfsfd-+_+_P_+_+_+')
 
     return (
       <Editor

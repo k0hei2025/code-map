@@ -1,27 +1,22 @@
-import React, { useState , useEffect } from 'react'
-import { Grid, TextField } from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { actionFileStore, fileStoreSlice } from '../../store/addFile'
 import Link from 'next/link'
 import router from 'next/router'
+import classes from './addFile.module.css'
+
 export default function projectFile() {
-
-
-  const [state, setState] = useState('')
-
-  const allFiles = useSelector((state) => state.fileStore.fileStore)
-  const token = useSelector((state) => state.auth.tokenId)
-  const userId = useSelector((state)=>state.auth.userId)
-
-
   
-
   const dispatch = useDispatch();
 
+  const [state, setState] = useState('')
+  const allFiles = useSelector((state) => state.fileStore.fileStore)
+  const token = useSelector((state) => state.auth.tokenId)
+  const userId = useSelector((state) => state.auth.userId)
 
-  useEffect(()=>{
-    console.log(token , userId);
-  },[token , userId,])
+
+  useEffect(() => {
+    console.log(token, userId);
+  }, [token, userId,])
 
 
   const postFileHandler = async (event) => {
@@ -39,9 +34,9 @@ export default function projectFile() {
       })
     const resData = await data.json();
     console.log(resData);
-              
-    if(state!==''){
-           router.push('/myProfile')
+
+    if (state !== '') {
+      router.push('/myProfile')
     }
 
 
@@ -50,35 +45,20 @@ export default function projectFile() {
   }
 
 
-
-
-
-
   return (
     <div>
-    <div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)'}}>
-      <form onSubmit={postFileHandler}
-      style={{display:'flex',flexDirection:'column',alignItems:'center'}}
-      >
-        <input id="outlined-basic" placeholder='Enter File Name' style={{height:'40px',width:'300px',marginBottom:'40px'}} value={state} onChange={(event) => {
-          setState(event.target.value)
-   
-        }} />
-        <button onClick={postFileHandler} style={{
-          backgroundColor: 'yellow',
-          fontWeight: 'bold',
-          padding: '1rem 2rem',
-          borderRadius: '5px',
-          letterSpacing:'1px',
-          textTransform:'uppercase',
-          fontSize:'15px',
-          fontWeight:'500',
-          border:'none',
-          marginBottom:'10px'
-        }}> Submit </button>
-        <Link href='./myProfile'><span style={{color:'white',letterSpacing:'1px'}}>Go back to Profile</span></Link>
-      </form>
+      <div className={classes.addFileDiv}>
+        <form onSubmit={postFileHandler}
+          className={classes.addFileForm}
+        >
+          <input id="outlined-basic" placeholder='Enter File Name' className={classes.addFileInput} value={state} onChange={(event) => {
+            setState(event.target.value)
+
+          }} />
+          <button onClick={postFileHandler} className={classes.addFileButton}> Submit </button>
+          <Link href='./myProfile'><span className={classes.addFileLink}>Go back to Profile</span></Link>
+        </form>
+      </div>
     </div>
-  </div>
   )
 }
