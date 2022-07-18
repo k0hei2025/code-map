@@ -5,58 +5,48 @@ import { Fragment } from 'react'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
-import { useRouter } from 'next/router'
 import { actionFileStore } from '../store/addFile'
 import { useDispatch } from 'react-redux'
+import { getProjects } from '../store/utils/asyncFunctions';
 
+
+// component for user projects page
 
 export default function profile() {
 
-   const router = useRouter();
+
    const dispatch = useDispatch();
-
-
    const [data, setData] = useState([])
-   const allFiles = useSelector((state) => state.fileStore.fileStore)
-   // const projectId = useSelector((state) => state.fileStore.myProfile)
-   const token = useSelector((state) => state.auth.tokenId)
    const userId = useSelector((state) => state.auth.userId)
-   // console.log('------projectId', projectId)
-
 
    useEffect(() => {
 
-      // console.log("token in profile.jsx" , token , userId) 
-
-      const fileData = async () => {
+      const getAllProjectsData = async () => {
 
 
-         const dataObjectToArray = [];
+         // const dataObjectToArray = [];
 
-         const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}.json`);
+         // const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}.json`);
 
 
-         const resData = await data.json()
+         // const resData = await data.json()
 
-         // console.log("resData", resData)
+         // for (let i in resData) {
+         //    dataObjectToArray.push({
+         //       id: i,
+         //       fileName: resData[i].fileName,
+         //    })
+         //    console.log("dataObjectToArray", dataObjectToArray)
+         // }
+        const allProjectsData=await getProjects(userId)
+         setData(allProjectsData);
 
-         for (let i in resData) {
-            dataObjectToArray.push({
-               id: i,
-               fileName: resData[i].fileName,
-            })
-            console.log("dataObjectToArray", dataObjectToArray)
-         }
-
-         setData(dataObjectToArray);
-
-         return resData;
+         // return resData;
+         return allProjectsData
       }
-
-      fileData();
+      getAllProjectsData();
    }, [])
 
-   // console.log('values', allFiles)
 
    return (
       <div>
@@ -70,15 +60,13 @@ export default function profile() {
             <Grid container spacing={3} style={{ display: 'flex' }}>
 
                {data.map((i) => {
-
-                  {/* console.log(i) */ }
                   return (
                      <Fragment>
                         <Grid item md={6} sm={12}>
                            <div className={classes.fileContainer} id={i.id}>
                               <Link href={`/projectFiles?id=${i.id}`}><p onClick={() => {
                                  dispatch(actionFileStore.findId({
-                                    myProfileId: i.id
+                                    subProjectId: i.id
                                  }))
 
                               }} style={{ color: 'white' }}><b>{i.fileName}</b></p></Link>

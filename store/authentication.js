@@ -4,7 +4,7 @@ const initialState = {
     login: 'false',
     signed: '',
     tokenId: ' ',
-    userId: ' '
+    userId: "1"
 }
 
 const authSlice = createSlice({

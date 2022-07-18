@@ -23,10 +23,8 @@ const addComponentSlice = createSlice({
         if (val.id !== action.payload.val.id) {
           newComponent.push(val)
         }
-        // console.log(val.id !== action.payload.val.id)
       })
       state.components = newComponent
-      // console.log(state.components)
     }
 
   },

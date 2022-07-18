@@ -25,21 +25,15 @@ function AddFile(props) {
             projectFileId: props.id
         }))
 
-        // console.log('project files ========> call in AddFile.jsx props.id ', props.id, props.projectFile)
-
-        // console.log('===========>', props.projectFile)
-        // console.log('add file project FIles props onme ------ ', props.projectFiles)
 
         props.projectFileDataId.map(async (i) => {
             if (i.id === projectId) {
 
                 props.projectFile.map(async (dataKey) => {
 
-                    // console.log(dataKey)
-
                     if (dataKey.id === props.id) {
 
-                        console.log('add file project FIles props onme ------ ', props.projectFiles, dataKey.id)
+                        // console.log('add file project FIles props onme ------ ', props.projectFiles, dataKey.id)
 
                         const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${i.id}/${props.projectFiles}.json`, {
                             method: "DELETE",
@@ -47,7 +41,6 @@ function AddFile(props) {
                         })
 
                         const resData = await data.json();
-                        // console.log(resData)
                     }
                 })
 
@@ -105,7 +98,8 @@ function AddFile(props) {
 
     const [showInput, setShowInput] = useState(false)
     const [inputValue, setInputValue] = useState('')
-
+//     console.log("yahi hu mai")
+//   console.log(props)
     return (
         <div className={classes.enclosingaddFilediv} onBlur={() => { setShowInput(false) }}>
 

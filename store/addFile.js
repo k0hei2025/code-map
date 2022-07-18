@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const trial = async () => {
+// const trial = async () => {
 
-      const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
-      const resData = await data.json()
-      console.log(resData);
+//       const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file.json`);
+//       const resData = await data.json()
+//       console.log(resData);
 
-}
+// }
 
 
 
 const initialState = {
 
       fileStore: [],
-      myProfile: '',
+      subProjectId: "-N7GAt8G6U4MPncXRwGB",
 
 }
 
@@ -32,7 +32,7 @@ export const fileStoreSlice = createSlice({
             },
 
             findId(state, action) {
-                  state.myProfile = action.payload.myProfileId;
+                  state.subProjectId = action.payload.subProjectId;
             }
 
       }

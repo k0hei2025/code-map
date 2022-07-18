@@ -37,9 +37,6 @@ export default function PersistentDrawerLeft() {
   const [Req, setReq] = React.useState(false);
   const [_Req, _setReq] = React.useState(false);
 
-  // console.log(router.query.fileId);
-  // console.log(allCodes , 'sdadddddddddddddddc akk cides')
-  // useEffect(()=>{})
 
 
   const addCardHandler = () => {
@@ -126,11 +123,8 @@ export default function PersistentDrawerLeft() {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {/* {theme.direction === 'ltr' ? ( */}
               <ChevronLeftIcon />
-            {/* ) : (
-              <ChevronRightIcon />
-            )} */}
+
           </IconButton>
         </div>
 

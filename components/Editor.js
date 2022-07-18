@@ -20,31 +20,19 @@ class App extends React.Component {
     this.setState({ code: this.props.allCodes });
 
   }
-
-
   render(props) {
-
-    // console.log("props.allCode Object", this.props.allCodes);
-    // console.log("props.id Container", this.props.idContainer[0].fileId)
-    // console.log("props.id Container", this.props.idContainer[0].projectId)
-    // console.log(this.props.allComponents, 'allComponents')
-    // console.log(this.props.allCodes)
-    // console.log(this.props.boxStorge[this.props.boxStorge.length - 1], 'sgfsggfsfd-+_+_P_+_+_+')
-
     return (
       <Editor
         value={this.state.code}
         onValueChange={
           code => {
             this.setState({ code })
-            // this.props.dispatch(addCodeString(code))
           }
         }
         onBlur={
           async () => {
 
             this.props.dispatch(addCodeString(
-              // this.state.code
               {
                 id: this.props.boxId,
                 code: this.state.code,
@@ -64,11 +52,6 @@ class App extends React.Component {
             const data = fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${this.props.userId}/${this.props.idContainer[0].projectId}/${this.props.idContainer[0].fileId}.json`, {
               method: 'PATCH',
               body: JSON.stringify({
-                // fileCode: {
-                //   code: this.props.allCodes,
-                //   containerBox: this.props.allComponents
-                // },
-
                 fileCode: {
                   code: this.props.boxStorge[this.props.boxStorge.length - 1]
                 }
@@ -80,8 +63,6 @@ class App extends React.Component {
 
             const resData = await data;
             console.log(resData)
-
-            //   // }
           }
 
         }
@@ -100,7 +81,6 @@ class App extends React.Component {
 
 const mapStateToProps = (state) =>
 ({
-  // codestring: state.editor.codeString
   allCodes: state.editor.allCodes,
   ids: state.mapData.ids,
   idContainer: state.mapData.idContainer,
@@ -108,9 +88,5 @@ const mapStateToProps = (state) =>
   userId: state.auth.userId,
   boxStorge: state.editor.boxStorge,
 });
-
-// const mapDispatchToProps = { addCodeString };
-
-// export default App
 
 export default connect(mapStateToProps)(App);

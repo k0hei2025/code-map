@@ -3,7 +3,7 @@ import classes from './AuthForm.module.css';
 import { authAction } from '../../store/authentication'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter, Router } from 'next/router'
-
+import { login, signup } from '../../store/utils/asyncFunctions';
 const AuthForm = () => {
 
 
@@ -12,7 +12,7 @@ const AuthForm = () => {
   const router = useRouter();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const login = useSelector((state) => state.auth.login)
+  const log = useSelector((state) => state.auth.login)
   const token = useSelector((state) => state.auth.tokenId)
   const userId = useSelector((state) => state.auth.userId)
 
@@ -35,7 +35,6 @@ const AuthForm = () => {
   const switchAuthModeHandler = () => {
 
     dispatch(authAction.isLogin())
-    // console.log(login)
   };
 
   const submitHandler = async (event) => {
@@ -44,54 +43,25 @@ const AuthForm = () => {
     const emailData = emailRef.current.value;
     const passwordData = emailRef.current.value;
 
-    if (login) {
-      const data = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDFgj3cq2lSpCOWefurgUeEGj1KHT1-Nck
-`, {
-        method: 'POST',
-        body: JSON.stringify({
-          email: emailData,
-          password: passwordData,
-          returnSecureToken: true,
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-
-      })
-
-      const resData = await data.json()
-      // console.log(resData)
-
-      dispatch(authAction.tokenContainer({
-        tokenId: resData.idToken,
-        userId: resData.localId,
-      }))
-
+    if (log) {
+      const resData = await login(emailData,passwordData,apiKey)
       router.push("/myProfile")
+
+    //  console.log(resData)
+      // dispatch(authAction.tokenContainer({
+      //   tokenId: resData.idToken,
+      //   userId: resData.localId,
+      // }))
+      //  console.log("====////////")
 
 
     } else {
-      const data = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`,
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: emailData,
-            password: passwordData,
-            returnSecureToken: true
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-
-      const resData = await data.json();
-
-      // console.log(resData);
-
-      dispatch(authAction.tokenContainer({
-        tokenId: resData.idToken,
-        userId: resData.localId,
-      }))
+      const resData = await signup(emailData,passwordData,apiKey);
+      // console.log(resData)
+      // dispatch(authAction.tokenContainer({
+      //   tokenId: resData.idToken,
+      //   userId: resData.localId,
+      // }))
 
     }
 
@@ -104,7 +74,7 @@ const AuthForm = () => {
     <body className={classes.body}>
       <section className={classes.auth}>
         <h3>Ready To Start Your Journey? You're in the right place </h3>
-        <h1>{login ? 'Login' : 'Sign Up'}</h1>
+        <h1>{log ? 'Login' : 'Sign Up'}</h1>
         <form onSubmit={submitHandler}>
           <div className={classes.control}>
             <label htmlFor='email'>Email</label>
@@ -115,13 +85,13 @@ const AuthForm = () => {
             <input type='password' id='password' required ref={passwordRef} />
           </div>
           <div className={classes.actions}>
-            <button>{login ? 'Login' : 'Create Account'}</button>
+            <button>{log ? 'Login' : 'Create Account'}</button>
             <button
               type='button'
               className={classes.toggle}
               onClick={switchAuthModeHandler}
             >
-              {login ? 'Create new account' : 'Login with existing account'}
+              {log ? 'Create new account' : 'Login with existing account'}
             </button>
           </div>
         </form>

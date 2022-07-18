@@ -26,7 +26,6 @@ const editorDataSlice = createSlice({
         // if it aready exists
 
         if (val.id === newCode.id) {
-          // console.log("already exists")
           val.code = newCode.code
           flag = 1
         }
@@ -37,7 +36,6 @@ const editorDataSlice = createSlice({
       if (flag === 0) {
         state.allCodes.push(newCode)
       }
-      // console.log(`redux code box`, current(state))
     },
 
     wrapContainer(state, action) {

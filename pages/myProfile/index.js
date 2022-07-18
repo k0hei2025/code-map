@@ -1,7 +1,8 @@
 import React from 'react'
 import { Fragment } from 'react'
-import ProfileData from '../../components/profile.jsx'
+import Profile from '../../components/profile.jsx'
 
+// page of all the projects created by user
 export default function myProfile() {
 
     return (
@@ -13,7 +14,7 @@ export default function myProfile() {
                 paddingRight: "2rem"
 
             }}>
-                <ProfileData />
+                <Profile />
             </div>
         </Fragment>
     )

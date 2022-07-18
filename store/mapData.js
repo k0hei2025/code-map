@@ -48,17 +48,11 @@ const mapData = createSlice({
 
          state.dataContainer = state.dataContainer.filter(key => key.id !== action.payload.id)
 
-         // console.log(state.dataContainer)
-         // console.log(state.dataContainer.fileId, state.dataContainer.projectId)
-
       }
-
-
 
       ,
       changeTitle(state, action) {
          state.title = action.payload;
-         // console.log(state.title)
       }
 
    }

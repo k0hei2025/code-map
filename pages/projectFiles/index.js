@@ -8,6 +8,7 @@ import classes1 from '../../components/mapData.module.css'
 import AddFile from '../../components/AddFile/AddFile'
 import { useRouter } from 'next/router'
 import Navigation from '../../components/NavigationBar/upperNavigationBar'
+import { getSubFolders } from '../../store/utils/asyncFunctions'
 
 const useStyles = makeStyles({
   root: {
@@ -18,51 +19,39 @@ const useStyles = makeStyles({
 })
 
 
-
+// contains all the subFolders of a particular project i.e. the add subFolder input is here only
 
 export default function index() {
 
   let count = 0;
   const route = useRouter();
   const [data, setData] = useState([]);
-  const [projectFile, setProjectFile] = useState([]);
+  const [subFolder, setSubFolder] = useState([]);
   const [showTitle, setShowTitle] = useState(false)
-  const [projetFileId, setProjectFileId] = useState(null);
+  const [projectFileId, setProjectFileId] = useState(null);
   const dataSet = useSelector((state) => state.mapData.dataContainer)
   const userId = useSelector(state => state.auth.userId)
   const title = useSelector(state => state.mapData.title)
-  const projectId = useSelector((state) => state.fileStore.myProfile)
-  const fileName = useRef();
+  const projectId = useSelector((state) => state.fileStore.subProjectId)
+  const subFolderName = useRef();
   const dispatch = useDispatch();
 
 
   useEffect(async () => {
 
-    // console.log("useEffect projectId", projectId);
-
-    const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${projectId}.json`);
-
-    const resData = await data.json();
-
-    // console.log('resData ProjectId useEffect ', projectId, resData)
-
-    const partialFiles = [];
-    for (let i in resData) {
-      partialFiles.push({
-        id: i,
-        files: resData[i].projectFiles,
-      })
-    }
-
-    // console.log("partial Files inside this projectId ", partialFiles)
-
-    setProjectFile(partialFiles);
+    // const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${projectId}.json`);
+    // const resData = await data.json();
+    // const partialFiles = [];
+    // for (let i in resData) {
+    //   partialFiles.push({
+    //     id: i,
+    //     files: resData[i].projectFiles,
+    //   })
+    // }
+   const  subFolders= await getSubFolders(userId,projectId);
+    setSubFolder(subFolders);
 
   }, [])
-
-
-  // console.log('project File ==>', projectFile)
-
 
   useEffect(() => {
     const fileData = async () => {
@@ -76,15 +65,15 @@ export default function index() {
 
       const resData = await data.json()
 
-      console.log("resData", resData)
+      // console.log("========////////", resData)
 
       for (let i in resData) {
         dataObjectToArray.push({
           id: i,
-          fileNameR: resData[i].fileName,
+          fileNameR: resData[i].subFolderName,
 
         })
-        console.log("dataObjectToArray", dataObjectToArray)
+        // console.log("dataObjectToArray", dataObjectToArray)
       }
 
 
@@ -97,7 +86,7 @@ export default function index() {
       return resData;
     }
 
-    console.log(route.query);
+    // console.log(route.query);
 
 
     fileData();
@@ -109,7 +98,7 @@ export default function index() {
   const saveHandler = (event) => {
 
     event.preventDefault();
-    let filenames = fileName.current.value;
+    // let subFolderNamee = subFolder.current.value;
 
     // console.log('save Button', dataSet);
 
@@ -120,12 +109,14 @@ export default function index() {
   const addDataHandler = async (event) => {
 
     event.preventDefault();
-    let filenames = fileName.current.value;
-
-    data.map(async (i) => {
+    let subFolderNamee = subFolderName.current.value;
+    // console.log(data);
+    console.log(typeof subFolder);
+    data.map(async (i,idx) => {
+      // console.log(idx)
       if (i.id === projectId) {
-        console.log(data);
-        console.log('check project id ', projectId, i.id)
+        // console.log(data);
+        // console.log('check project id ', projectId, i.id)
 
 
 
@@ -134,36 +125,27 @@ export default function index() {
 
           method: 'POST',
           body: JSON.stringify({
-            projectFiles: fileName.current.value,
+            projectFiles: subFolder,
           }),
           headers: {
             'Content-Type': 'application/json'
           }
 
         })
-
         const resData = await data.json();
-        // console.log('resData', resData)
-        // console.log(' resdata  add file', resData.name)
+        // console.log(resData);
         setProjectFileId(resData.name);
-        // console.log('projectFileId', projetFileId)
-
       }
     })
 
+    // dispatch(mapDataAction.addData(
+    //   {
+    //     id: projetFileId,
+    //     fileName: subFolderName
+    //   }
 
+    // ))
 
-
-
-    dispatch(mapDataAction.addData(
-      {
-        id: projetFileId,
-        fileName: filenames
-      }
-
-    ))
-
-    // console.log(filenames);
   }
 
   return (
@@ -172,16 +154,17 @@ export default function index() {
 
       <div className={classes.contain} maxWidth='xl'>
 
-        <input type='text' className={classes.nameInput} placeholder='File Name' ref={fileName} /><br />
+        <input type='text' className={classes.nameInput} placeholder='File Name' ref={subFolderName} /><br />
         <Button className='addButton' variant='contained' onClick={addDataHandler
         } color='primary'> Add File </Button>
         <Button variant='contained' className='addButton' color='primary' onClick={saveHandler}>Save</Button>
 
         <div className={classes.enclose}>
-          {projectFile.map((val) => {
+          {(subFolder.length>0) && subFolder.map((val) => {
+            // console.log(val)
             if (val.files) {
               return (
-                <AddFile className={classes1.listItem} projectFileDataId={dataSet} projectFile={projectFile} id={val.id} fileName={val.files} />
+                <AddFile className={classes1.listItem} projectFileDataId={dataSet} projectFile={subFolderName} id={val.id} fileName={val.fileNameR} />
               )
             }
 

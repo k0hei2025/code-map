@@ -14,16 +14,13 @@ function Box(props) {
   const [fileCode, setFileCode] = useState([]);
 
 
-
   useEffect(async () => {
-
-    // console.log("props.", idContainers)
 
     const data = await fetch(`https://code-map-9f57c-default-rtdb.firebaseio.com/file/${userId}/${idContainers[0].projectId}/${idContainers[0].fileId}/fileCode/code.json`);
 
 
     const resData = await data.json();
-
+    
     const arr = [];
     // console.log('fetch data of fileCode', resData.containerBox[0].sideBarObject.id, resData.code[0].id);
     // console.log(resData, 'res__________________________---------____>')
@@ -43,7 +40,6 @@ function Box(props) {
     // console.log(`allComponents--------------------___>`, arr)
   }, [])
 
-  // console.log(`allComponents`, allComponents)
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
@@ -53,7 +49,6 @@ function Box(props) {
         return (
           <fieldset
             key={val.sideBarObject.id}
-            // key={val.colorId}
             className="code-edit-container"
             style={{ color: `${val.sideBarObject.color}`, border: `3px solid ${val.sideBarObject.color}` }}
           >
@@ -77,17 +72,6 @@ function Box(props) {
   )
 
 }
-
-// const mapStateToProps = (state) =>
-// ({
-//   // codestring: state.editor.codeString
-//   allCodes: state.editor.allCodes,
-//   ids: state.mapData.ids,
-//   idContainer: state.mapData.idContainer,
-//   allComponents: state.component.component
-// });
-
-// const mapDispatchToProps = { addCodeString };
 
 export default Box
 
